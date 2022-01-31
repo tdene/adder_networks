@@ -1,0 +1,52 @@
+
+===========================================================================
+report_checks -unconstrained
+============================================================================
+Startpoint: a[3] (input port clocked by clk)
+Endpoint: sum[6] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 v input external delay
+                  0.02    0.02    0.02 v a[3] (in)
+     2    0.01                           a[3] (net)
+                  0.03    0.00    0.02 v _059_/B (sky130_fd_sc_hd__nand2_2)
+                  0.07    0.08    0.09 ^ _059_/Y (sky130_fd_sc_hd__nand2_2)
+     4    0.01                           _012_ (net)
+                  0.07    0.00    0.10 ^ _060_/B_N (sky130_fd_sc_hd__or2b_2)
+                  0.07    0.33    0.43 v _060_/X (sky130_fd_sc_hd__or2b_2)
+     3    0.01                           _013_ (net)
+                  0.07    0.00    0.43 v _064_/B1 (sky130_fd_sc_hd__a2111o_2)
+                  0.07    0.48    0.92 v _064_/X (sky130_fd_sc_hd__a2111o_2)
+     2    0.01                           _017_ (net)
+                  0.08    0.00    0.92 v _078_/B2 (sky130_fd_sc_hd__a221o_2)
+                  0.07    0.40    1.32 v _078_/X (sky130_fd_sc_hd__a221o_2)
+     1    0.01                           _029_ (net)
+                  0.08    0.01    1.33 v _079_/B (sky130_fd_sc_hd__xor2_2)
+                  0.46    0.37    1.71 ^ _079_/X (sky130_fd_sc_hd__xor2_2)
+     1    0.03                           sum[6] (net)
+                  0.46    0.00    1.71 ^ sum[6] (out)
+                                  1.71   data arrival time
+
+                  0.00    3.50    3.50   clock clk (rise edge)
+                          0.00    3.50   clock network delay (ideal)
+                         -0.25    3.25   clock uncertainty
+                          0.00    3.25   clock reconvergence pessimism
+                          0.00    3.25   output external delay
+                                  3.25   data required time
+-----------------------------------------------------------------------------
+                                  3.25   data required time
+                                 -1.71   data arrival time
+-----------------------------------------------------------------------------
+                                  1.54   slack (MET)
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+No paths found.

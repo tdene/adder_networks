@@ -28,4 +28,5 @@ implement:
 	./flow.tcl -design adder -init_design_config -src $(ROOT_DIR)/adders/$(WIDTH)bit/hdl/$(DESIGN_NICKNAME).v; \
 	cp $(ROOT_DIR)/OpenLane_config/* designs/adder/; \
 	make mount; \
+	rm -rf $(ROOT_DIR)/adders/$(WIDTH)bit/reports/$(DESIGN_NICKNAME); \
     cp -r $(OPENLANE_INSTALL)/designs/adder/runs/*/reports/ $(ROOT_DIR)/adders/$(WIDTH)bit/reports/$(DESIGN_NICKNAME)/

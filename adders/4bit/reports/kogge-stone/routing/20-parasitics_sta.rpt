@@ -1,0 +1,55 @@
+
+===========================================================================
+report_checks -unconstrained
+============================================================================
+Startpoint: b[0] (input port clocked by clk)
+Endpoint: cout (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 v input external delay
+                  0.01    0.00    0.00 v b[0] (in)
+     1    0.00                           b[0] (net)
+                  0.01    0.00    0.00 v input5/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.06    0.10    0.11 v input5/X (sky130_fd_sc_hd__clkbuf_1)
+     3    0.01                           net5 (net)
+                  0.06    0.00    0.11 v _18_/A1 (sky130_fd_sc_hd__o21ai_1)
+                  0.22    0.24    0.34 ^ _18_/Y (sky130_fd_sc_hd__o21ai_1)
+     3    0.01                           _02_ (net)
+                  0.22    0.00    0.35 ^ _32_/A2 (sky130_fd_sc_hd__a21oi_1)
+                  0.07    0.12    0.46 v _32_/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.00                           _13_ (net)
+                  0.07    0.00    0.46 v _34_/B1 (sky130_fd_sc_hd__o22a_1)
+                  0.07    0.23    0.69 v _34_/X (sky130_fd_sc_hd__o22a_1)
+     2    0.01                           _15_ (net)
+                  0.07    0.00    0.69 v _36_/A2 (sky130_fd_sc_hd__a21bo_1)
+                  0.04    0.21    0.90 v _36_/X (sky130_fd_sc_hd__a21bo_1)
+     1    0.00                           net10 (net)
+                  0.04    0.00    0.90 v output10/A (sky130_fd_sc_hd__buf_2)
+                  0.09    0.19    1.09 v output10/X (sky130_fd_sc_hd__buf_2)
+     1    0.03                           cout (net)
+                  0.09    0.00    1.09 v cout (out)
+                                  1.09   data arrival time
+
+                  0.00    2.50    2.50   clock clk (rise edge)
+                          0.00    2.50   clock network delay (ideal)
+                         -0.25    2.25   clock uncertainty
+                          0.00    2.25   clock reconvergence pessimism
+                          0.00    2.25   output external delay
+                                  2.25   data required time
+-----------------------------------------------------------------------------
+                                  2.25   data required time
+                                 -1.09   data arrival time
+-----------------------------------------------------------------------------
+                                  1.16   slack (MET)
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+No paths found.
