@@ -1,4 +1,4 @@
-from pptrees.prefix_tree import prefix_tree as tree
+from pptrees.adder_tree import adder_tree as tree
 from os import environ
 from os.path import join
 
