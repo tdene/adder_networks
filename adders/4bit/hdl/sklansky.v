@@ -5,7 +5,7 @@ module adder(cout, sum, a, b, cin);
 	output [3:0] sum;
 	output cout;
 
-	wire p2, p_lsb, p0, g2, g_lsb, g0, g1, p1;
+	wire g0, g2, p1, p0, g1, g_lsb, p_lsb, p2;
 	wire n13, n14, n15, n16, n17, n18, n21, n22, n25, n26, n27, n28, n29, n30, n31, n32;
 
 	ppa_first_pre ppa_first_pre_0_0 ( .cin( {cin} ), .pout( {p_lsb} ), .gout( {g_lsb} ) );
@@ -22,79 +22,79 @@ module adder(cout, sum, a, b, cin);
 	ppa_grey ppa_grey_cout ( .gin ( {g3,n32} ), .pin ( p3 ), .gout ( cout ) );
 
 
-    assign n13=p_lsb;
-    assign n14=g_lsb;
+	assign n13 = p_lsb;
+	assign n14 = g_lsb;
 	ppa_black ppa_black_1_1 ( .gin( {g0,g_lsb} ), .pin( {p0,p_lsb} ), .gout( {n16} ), .pout( {n15} ) );
-    assign n17=p1;
-    assign n18=g1;
+	assign n17 = p1;
+	assign n18 = g1;
 	ppa_black ppa_black_3_1 ( .gin( {g2,g1} ), .pin( {p2,p1} ), .gout( {n22} ), .pout( {n21} ) );
 
-    assign n25=n13;
-    assign n26=n14;
-    assign n27=n15;
-    assign n28=n16;
+	assign n25 = n13;
+	assign n26 = n14;
+	assign n27 = n15;
+	assign n28 = n16;
 	ppa_black ppa_black_2_2 ( .gin( {n18,n16} ), .pin( {n17,n15} ), .gout( {n30} ), .pout( {n29} ) );
 	ppa_black ppa_black_3_2 ( .gin( {n22,n16} ), .pin( {n21,n15} ), .gout( {n32} ), .pout( {n31} ) );
 
 
 endmodule
 
-module ppa_pre(a_in, b_in, pout, gout);
-
-    input a_in, b_in;
-    output pout, gout;
-
-    assign pout=a_in^b_in;
-    assign gout=a_in&b_in;
-
-endmodule
-
 module ppa_first_pre(cin, pout, gout);
 
-    input cin;
-    output pout, gout;
+	input cin;
+	output pout, gout;
 
-    assign pout=1'b0;
-    assign gout=cin;
-
-endmodule
-
-module invis_node(pin, gin, pout, gout);
-
-    input pin, gin;
-    output pout, gout;
-
-    assign pout=pin;
-    assign gout=gin;
-
-endmodule
-
-module ppa_black(gin, pin, gout, pout);
-
-    input [1:0] gin, pin;
-    output gout, pout;
-
-    assign pout=pin[1]&pin[0];
-    assign gout=gin[1]|(pin[1]&gin[0]);
+	assign pout=1'b0;
+	assign gout=cin;
 
 endmodule
 
 module ppa_post(pin, gin, sum);
 
-    input pin, gin;
-    output sum;
+	input pin, gin;
+	output sum;
 
-    assign sum=pin^gin;
+	xor2 U1(sum,pin,gin);
+
+endmodule
+
+module ppa_pre(a_in, b_in, pout, gout);
+
+	input a_in, b_in;
+	output pout, gout;
+
+	xor2 U1(pout,a_in,b_in);
+	and2 U2(gout,a_in,b_in);
+
+endmodule
+
+module invis_node(pin, gin, pout, gout);
+
+	input pin, gin;
+	output pout, gout;
+
+	assign pout = pin;
+	assign gout = gin;
+
+endmodule
+
+module ppa_black(gin, pin, gout, pout);
+
+	input [1:0] gin, pin;
+	output gout, pout;
+
+	and2 U1(pout,pin[1],pin[0]);
+	ao21 U2(gout,gin[0],pin[1],gin[1]);
 
 endmodule
 
 module ppa_grey(gin, pin, gout);
 
-    input[1:0] gin;
-    input pin;
-    output gout;
+	input[1:0] gin;
+	input pin;
+	output gout;
 
-    assign gout=gin[1]|(pin&gin[0]);
+	ao21 U1(gout,gin[0],pin,gin[1]);
 
 endmodule
 

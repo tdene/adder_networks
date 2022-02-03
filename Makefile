@@ -1,18 +1,15 @@
 SHELL:= bash
 export ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
-export WIDTH?=8
+export WIDTH?=32
 export START?=ripple-carry
 #Example:
 #export TRANSFORMS?=_LF@6_LF@4
 export TRANSFORMS?=
 export DESIGN_NICKNAME?=$(START)$(TRANSFORMS)
+export LIBRARY?=sky130_fd_sc_hd
 
 export OPENLANE_INSTALL?=$(realpath ../OpenROAD/OpenLane)
-
-export PLATFORM?=sky130hd
-export FP_SIZE?=20
-export TARGET_PERIOD?=2
 
 default: generate implement
 
@@ -25,7 +22,9 @@ generate:
 implement:
 	cd $(OPENLANE_INSTALL); \
 	rm -rf designs/adder; \
-	./flow.tcl -design adder -init_design_config -src $(ROOT_DIR)/adders/$(WIDTH)bit/hdl/$(DESIGN_NICKNAME).v; \
+	./flow.tcl -design adder -init_design_config \
+        -src "$(ROOT_DIR)/adders/$(WIDTH)bit/hdl/$(DESIGN_NICKNAME).v \
+        $(ROOT_DIR)/adders/$(WIDTH)bit/hdl/$(LIBRARY)_map.v"; \
 	cp $(ROOT_DIR)/OpenLane_config/* designs/adder/; \
 	make mount; \
 	rm -rf $(ROOT_DIR)/adders/$(WIDTH)bit/reports/$(DESIGN_NICKNAME); \
