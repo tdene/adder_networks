@@ -7,7 +7,9 @@ export START?=ripple-carry
 #export TRANSFORMS?=_LF@6_LF@4
 export TRANSFORMS?=
 export DESIGN_NICKNAME?=$(START)$(TRANSFORMS)
-export LIBRARY?=sky130_fd_sc_hd
+export STD_CELL_LIBRARY?=sky130_fd_sc_hs
+#export MAPPING?=$(STD_CELL_LIBRARY)
+export MAPPING?=behavioral
 
 export OPENLANE_INSTALL?=$(realpath ../OpenROAD/OpenLane)
 
@@ -24,8 +26,8 @@ implement:
 	rm -rf designs/adder; \
 	./flow.tcl -design adder -init_design_config \
         -src "$(ROOT_DIR)/adders/$(WIDTH)bit/hdl/$(DESIGN_NICKNAME).v \
-        $(ROOT_DIR)/adders/$(WIDTH)bit/hdl/$(LIBRARY)_map.v"; \
+        $(ROOT_DIR)/adders/$(WIDTH)bit/hdl/$(MAPPING)_map.v"; \
 	cp $(ROOT_DIR)/OpenLane_config/* designs/adder/; \
-	make mount; \
+	make adder; \
 	rm -rf $(ROOT_DIR)/adders/$(WIDTH)bit/reports/$(DESIGN_NICKNAME); \
     cp -r $(OPENLANE_INSTALL)/designs/adder/runs/*/reports/ $(ROOT_DIR)/adders/$(WIDTH)bit/reports/$(DESIGN_NICKNAME)/

@@ -137,6 +137,7 @@ def main():
         data.append(s_edp.to('ns**2*uW').round(1).magnitude)
 
         print(*data,sep=',')
+    print()
 
 if __name__=="__main__":
     main()
