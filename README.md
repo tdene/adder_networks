@@ -10,3 +10,5 @@ pip3 install git+https://github.com/tdene/synth_opt_adders.git --user --upgrade 
 Next, follow the OpenLane [installation instructions](https://github.com/The-OpenROAD-Project/OpenLane#setting-up-openlane) in order to install their tool.
 
 Finally, use the included Makefile to generate and/or implement adder networks.
+
+Make sure to change the OPENLANE_INSTALL variable on line 14 of the Makefile to match that of your system.

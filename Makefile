@@ -30,4 +30,4 @@ implement:
 	cp $(ROOT_DIR)/OpenLane_config/* designs/adder/; \
 	make quick_run QUICK_RUN_DESIGN=adder; \
 	rm -rf $(ROOT_DIR)/adders/$(WIDTH)bit/reports/$(DESIGN_NICKNAME); \
-    cp -r $(OPENLANE_INSTALL)/designs/adder/runs/*/reports/ $(ROOT_DIR)/adders/$(WIDTH)bit/reports/$(DESIGN_NICKNAME)/
+	cp -r $(OPENLANE_INSTALL)/designs/adder/runs/*/reports/ $(ROOT_DIR)/adders/$(WIDTH)bit/reports/$(DESIGN_NICKNAME)/
