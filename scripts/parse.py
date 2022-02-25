@@ -53,7 +53,7 @@ def synth_power(path):
     return ret
 
 def pnr_timing(path):
-    path += "/routing/25-parasitics_multi_corner_sta.max.rpt"
+    path += "/routing/24-parasitics_multi_corner_sta.max.rpt"
     ret = None
     with open(path) as f:
         while ret is None:
@@ -72,7 +72,7 @@ def pnr_area(path):
                 return (Q_(float(l[2]),'um^2'),l[4])
 
 def pnr_power(path):
-    path += "/routing/25-parasitics_multi_corner_sta.power.rpt"
+    path += "/routing/24-parasitics_multi_corner_sta.power.rpt"
     ret = None
     flag = False
     with open(path) as f:
