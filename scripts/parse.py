@@ -11,10 +11,11 @@ def init():
     argparser.add_argument("--names",type=str,nargs="*",default=["behavioral"])
     argparser.add_argument("--scl",type=str,default="sky130_fd_sc_hd")
     argparser.add_argument("--target",type=float,default=10.0)
+    argparser.add_argument("--target_density",type=str)
 
     args=argparser.parse_args()
 
-    return args.width,args.names,args.scl,args.target
+    return args.width,args.names,args.scl,args.target,args.target_density
 
 def parse_path(width,scl,name):
 
@@ -105,7 +106,7 @@ def capitalize_name(s):
     return '_'.join([x[0].upper()+x[1:] for x in s.split('_')])
 
 def main():
-    w,names,scl,target = init()
+    w,names,scl,target,target_density = init()
     target = Q_(target,'ns')
     for n in names:
         path = parse_path(w,scl,n)
@@ -135,7 +136,7 @@ def main():
         data.append(w)
         data.append(cap_name)
 
-        data.append('')
+        data.append(target_density)
         data.append(cells)
 
         data.append("{:~P}".format(round(p_timing.to('ns'),2)))
@@ -143,6 +144,8 @@ def main():
         data.append("{:~P}".format(round(p_area[0],2)))
         data.append("{:~P}".format(round(adj_p_power.to('uW'),2)))
         data.append("{:~P}".format(round(p_energy.to('fJ'),2)))
+
+        data.append(p_area[1])
 
         data.append("{:~P}".format(round(s_timing.to('ns'),2)))
         data.append("{:~P}".format(round((1.0/s_timing).to('MHz'),2)))
