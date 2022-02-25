@@ -62,6 +62,15 @@ def pnr_timing(path):
                 ret = Q_(float(l[0]),'ns')
     return ret
 
+def pnr_area(path):
+    path += "/placement/8-resizer_sta.area.rpt"
+    ret = None
+    with open(path) as f:
+        while ret is None:
+            l = f.readline().split()
+            if ('utilization.' in l):
+                return (Q_(float(l[2]),'um^2'),l[4])
+
 def pnr_power(path):
     path += "/routing/25-parasitics_multi_corner_sta.power.rpt"
     ret = None
@@ -105,12 +114,15 @@ def main():
         s_timing = synth_timing(path)
         s_power = synth_power(path)
         adj_s_power = s_power*target/s_timing
+        adj_s_power = s_power
         s_pdp = adj_s_power * s_timing
         s_edp = s_pdp * s_timing
 
+        p_area = pnr_area(path)
         p_timing = pnr_timing(path)
         p_power = pnr_power(path)
         adj_p_power = p_power*target/p_timing
+        adj_p_power = p_power
         p_pdp = adj_p_power * p_timing
         p_edp = p_pdp * p_timing
 

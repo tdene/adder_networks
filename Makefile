@@ -16,6 +16,7 @@ export OPENLANE_INSTALL?=$(realpath ../OpenLane)
 default: generate implement
 
 generate:
+	mkdir -p $(ROOT_DIR)/adders/$(WIDTH)bit
 	mkdir -p $(ROOT_DIR)/adders/$(WIDTH)bit/hdl
 	mkdir -p $(ROOT_DIR)/adders/$(WIDTH)bit/png
 	mkdir -p $(ROOT_DIR)/adders/$(WIDTH)bit/reports
