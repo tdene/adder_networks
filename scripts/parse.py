@@ -115,16 +115,16 @@ def main():
         s_power = synth_power(path)
         adj_s_power = s_power*target/s_timing
         adj_s_power = s_power
-        s_pdp = adj_s_power * s_timing
-        s_edp = s_pdp * s_timing
+        s_energy = adj_s_power * s_timing
+#        s_edp = s_energy * s_timing
 
         p_area = pnr_area(path)
         p_timing = pnr_timing(path)
         p_power = pnr_power(path)
         adj_p_power = p_power*target/p_timing
         adj_p_power = p_power
-        p_pdp = adj_p_power * p_timing
-        p_edp = p_pdp * p_timing
+        p_energy = adj_p_power * p_timing
+#        p_edp = p_energy * p_timing
 
         cells = num_cells(path)
 
@@ -135,20 +135,21 @@ def main():
         data.append(w)
         data.append(cap_name)
 
-        data.append(round(p_timing.to('ns').magnitude,2))
-        data.append("{:~}".format(((1.0/p_timing).to('MHz'))))
+        data.append('')
         data.append(cells)
-        data.append(round(adj_p_power.to('uW').magnitude,1))
-        data.append(round(p_pdp.to('fJ').magnitude,1))
-        data.append(round(p_edp.to('ns**2*uW').magnitude,1))
 
-        data.append(round(s_timing.to('ns').magnitude,2))
-        data.append("{:~}".format(((1.0/s_timing).to('MHz'))))
-        data.append(round(s_area.to('um^2').magnitude,1))
-        data.append(round(adj_s_power.to('uW').magnitude,1))
-        data.append(round(s_pdp.to('fJ').magnitude,1))
-        data.append(round(s_edp.to('ns**2*uW').magnitude,1))
+        data.append("{:~P}".format(round(p_timing.to('ns'),2)))
+        data.append("{:~P}".format(round((1.0/p_timing).to('MHz'),2)))
+        data.append("{:~P}".format(round(p_area[0],2)))
+        data.append("{:~P}".format(round(adj_p_power.to('uW'),2)))
+        data.append("{:~P}".format(round(p_energy.to('fJ'),2)))
 
+        data.append("{:~P}".format(round(s_timing.to('ns'),2)))
+        data.append("{:~P}".format(round((1.0/s_timing).to('MHz'),2)))
+        data.append("{:~P}".format(round(s_area,2)))
+        data.append("{:~P}".format(round(adj_s_power.to('uW'),2)))
+        data.append("{:~P}".format(round(s_energy.to('fJ'),2)))
+        
         print(*data,sep=',')
     print()
 
