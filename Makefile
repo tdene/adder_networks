@@ -11,19 +11,17 @@ export PDK_NAME?=sky130A
 export STD_CELL_LIBRARY?=sky130_fd_sc_hd
 
 # Cell mapping settings
-MANUAL_MAP?=0
+MANUAL_MAP?=1
 ifeq (MANUAL_MAP,1)
-	export SYNTH_READ_BLACKBOX_LIB = 1
 	MAPPING = $(STD_CELL_LIBRARY)
 else
-	export SYNTH_READ_BLACKBOX_LIB = 0
 	MAPPING = behavioral
 endif
 
 # OpenLane settings
 CLOCK_PERIOD?=10.0
 FP_CORE_UTIL?=20
-PL_TARGET_DENSITY?=0.25
+PL_TARGET_DENSITY?=0.85
 SYNTH_NO_FLAT?=1
 # Helper variable to shorten scripts
 config_folder=$(ROOT_DIR)/OpenLane_config/
