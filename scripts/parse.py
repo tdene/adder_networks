@@ -8,7 +8,7 @@ clk_uncertainty = Q_(0.25,'ns')
 def init():
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--width",type=str,default="32")
-    argparser.add_argument("--names",type=str,nargs="*",default=["behavioral"])
+    argparser.add_argument("--names",type=str,nargs="*",default=["ripple-carry"])
     argparser.add_argument("--scl",type=str,default="sky130_fd_sc_hd")
     argparser.add_argument("--target",type=float,default=10.0)
     argparser.add_argument("--target_density",type=str)
