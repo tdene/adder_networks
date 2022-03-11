@@ -11,11 +11,13 @@ export PDK_NAME?=sky130A
 export STD_CELL_LIBRARY?=sky130_fd_sc_hd
 
 # Cell mapping settings
-MANUAL_MAP?=1
-ifeq (MANUAL_MAP,1)
-	MAPPING = $(STD_CELL_LIBRARY)
+ADDER_TECH_MAP?=0
+ifeq ($(ADDER_TECH_MAP),1)
+	export SYNTH_READ_BLACKBOX_LIB = 1
+	export MAPPING = $(STD_CELL_LIBRARY)
 else
-	MAPPING = behavioral
+	export SYNTH_READ_BLACKBOX_LIB = 0
+	export MAPPING = behavioral
 endif
 
 # OpenLane settings
@@ -45,6 +47,7 @@ add_configs:
 	echo "set ::env(FP_CORE_UTIL) $(FP_CORE_UTIL)" >> $(config_tcl)
 	echo "set ::env(PL_TARGET_DENSITY) $(PL_TARGET_DENSITY)" >> $(config_tcl)
 	echo "set ::env(SYNTH_NO_FLAT) $(SYNTH_NO_FLAT)" >> $(config_tcl)
+	echo "set ::env(SYNTH_READ_BLACKBOX_LIB) $(SYNTH_READ_BLACKBOX_LIB)" >> $(config_tcl)
 
 implement: add_configs
 	cd $(OPENLANE_INSTALL); \
