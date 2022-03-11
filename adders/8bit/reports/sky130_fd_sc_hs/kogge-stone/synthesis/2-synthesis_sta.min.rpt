@@ -1,0 +1,186 @@
+
+===========================================================================
+report_checks -path_delay min (Hold)
+============================================================================
+Startpoint: a[7] (input port clocked by clk)
+Endpoint: cout (output port clocked by clk)
+Path Group: clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 v input external delay
+                  0.02    0.01    0.01 v a[7] (in)
+     2    0.01                           a[7] (net)
+                  0.02    0.00    0.01 v ppa_pre_cout.U2.and2/A (sky130_fd_sc_hs__and2_1)
+                  0.02    0.06    0.07 v ppa_pre_cout.U2.and2/X (sky130_fd_sc_hs__and2_1)
+     1    0.00                           ppa_grey_cout.U1.B0 (net)
+                  0.02    0.00    0.07 v ppa_grey_cout.U1.ao21/B1 (sky130_fd_sc_hs__a21o_1)
+                  0.16    0.18    0.26 v ppa_grey_cout.U1.ao21/X (sky130_fd_sc_hs__a21o_1)
+     1    0.04                           cout (net)
+                  0.16    0.00    0.26 v cout (out)
+                                  0.26   data arrival time
+
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                          0.00    0.25   output external delay
+                                  0.25   data required time
+-----------------------------------------------------------------------------
+                                  0.25   data required time
+                                 -0.26   data arrival time
+-----------------------------------------------------------------------------
+                                  0.01   slack (MET)
+
+
+Startpoint: b[7] (input port clocked by clk)
+Endpoint: sum[7] (output port clocked by clk)
+Path Group: clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 ^ input external delay
+                  0.03    0.02    0.02 ^ b[7] (in)
+     2    0.01                           b[7] (net)
+                  0.03    0.00    0.02 ^ ppa_pre_cout.U1.xor2/B (sky130_fd_sc_hs__xor2_1)
+                  0.04    0.06    0.07 v ppa_pre_cout.U1.xor2/X (sky130_fd_sc_hs__xor2_1)
+     2    0.01                           ppa_grey_cout.U1.A1 (net)
+                  0.04    0.00    0.07 v ppa_post_7_4.U1.xor2/A (sky130_fd_sc_hs__xor2_1)
+                  0.03    0.10    0.18 v ppa_post_7_4.U1.xor2/X (sky130_fd_sc_hs__xor2_1)
+     1    0.00                           ppa_post_7_4.U1.Y (net)
+                  0.03    0.00    0.18 v _7_/A (sky130_fd_sc_hs__buf_2)
+                  0.08    0.13    0.31 v _7_/X (sky130_fd_sc_hs__buf_2)
+     1    0.04                           sum[7] (net)
+                  0.08    0.00    0.31 v sum[7] (out)
+                                  0.31   data arrival time
+
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                          0.00    0.25   output external delay
+                                  0.25   data required time
+-----------------------------------------------------------------------------
+                                  0.25   data required time
+                                 -0.31   data arrival time
+-----------------------------------------------------------------------------
+                                  0.06   slack (MET)
+
+
+Startpoint: b[0] (input port clocked by clk)
+Endpoint: sum[0] (output port clocked by clk)
+Path Group: clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 ^ input external delay
+                  0.03    0.02    0.02 ^ b[0] (in)
+     2    0.01                           b[0] (net)
+                  0.03    0.00    0.02 ^ ppa_pre_1_0.U1.xor2/B (sky130_fd_sc_hs__xor2_1)
+                  0.05    0.06    0.08 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hs__xor2_1)
+     3    0.01                           ppa_black_2_1.U1.B (net)
+                  0.05    0.00    0.08 v ppa_post_0_4.U1.xor2/A (sky130_fd_sc_hs__xor2_1)
+                  0.03    0.11    0.19 v ppa_post_0_4.U1.xor2/X (sky130_fd_sc_hs__xor2_1)
+     1    0.00                           ppa_post_0_4.U1.Y (net)
+                  0.03    0.00    0.19 v _0_/A (sky130_fd_sc_hs__buf_2)
+                  0.08    0.13    0.32 v _0_/X (sky130_fd_sc_hs__buf_2)
+     1    0.04                           sum[0] (net)
+                  0.08    0.00    0.32 v sum[0] (out)
+                                  0.32   data arrival time
+
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                          0.00    0.25   output external delay
+                                  0.25   data required time
+-----------------------------------------------------------------------------
+                                  0.25   data required time
+                                 -0.32   data arrival time
+-----------------------------------------------------------------------------
+                                  0.07   slack (MET)
+
+
+Startpoint: b[6] (input port clocked by clk)
+Endpoint: sum[6] (output port clocked by clk)
+Path Group: clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 ^ input external delay
+                  0.03    0.02    0.02 ^ b[6] (in)
+     2    0.01                           b[6] (net)
+                  0.03    0.00    0.02 ^ ppa_pre_7_0.U1.xor2/B (sky130_fd_sc_hs__xor2_1)
+                  0.05    0.07    0.08 v ppa_pre_7_0.U1.xor2/X (sky130_fd_sc_hs__xor2_1)
+     3    0.01                           ppa_black_7_1.U1.A (net)
+                  0.05    0.00    0.08 v ppa_post_6_4.U1.xor2/A (sky130_fd_sc_hs__xor2_1)
+                  0.03    0.11    0.19 v ppa_post_6_4.U1.xor2/X (sky130_fd_sc_hs__xor2_1)
+     1    0.00                           ppa_post_6_4.U1.Y (net)
+                  0.03    0.00    0.19 v _6_/A (sky130_fd_sc_hs__buf_2)
+                  0.08    0.13    0.32 v _6_/X (sky130_fd_sc_hs__buf_2)
+     1    0.04                           sum[6] (net)
+                  0.08    0.00    0.32 v sum[6] (out)
+                                  0.32   data arrival time
+
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                          0.00    0.25   output external delay
+                                  0.25   data required time
+-----------------------------------------------------------------------------
+                                  0.25   data required time
+                                 -0.32   data arrival time
+-----------------------------------------------------------------------------
+                                  0.07   slack (MET)
+
+
+Startpoint: b[1] (input port clocked by clk)
+Endpoint: sum[1] (output port clocked by clk)
+Path Group: clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 ^ input external delay
+                  0.03    0.02    0.02 ^ b[1] (in)
+     2    0.01                           b[1] (net)
+                  0.03    0.00    0.02 ^ ppa_pre_2_0.U1.xor2/B (sky130_fd_sc_hs__xor2_1)
+                  0.06    0.07    0.09 v ppa_pre_2_0.U1.xor2/X (sky130_fd_sc_hs__xor2_1)
+     4    0.01                           ppa_black_2_1.U1.A (net)
+                  0.06    0.00    0.09 v ppa_post_1_4.U1.xor2/A (sky130_fd_sc_hs__xor2_1)
+                  0.03    0.11    0.20 v ppa_post_1_4.U1.xor2/X (sky130_fd_sc_hs__xor2_1)
+     1    0.00                           ppa_post_1_4.U1.Y (net)
+                  0.03    0.00    0.20 v _1_/A (sky130_fd_sc_hs__buf_2)
+                  0.08    0.13    0.33 v _1_/X (sky130_fd_sc_hs__buf_2)
+     1    0.04                           sum[1] (net)
+                  0.08    0.00    0.33 v sum[1] (out)
+                                  0.33   data arrival time
+
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                          0.00    0.25   output external delay
+                                  0.25   data required time
+-----------------------------------------------------------------------------
+                                  0.25   data required time
+                                 -0.33   data arrival time
+-----------------------------------------------------------------------------
+                                  0.08   slack (MET)
+
+
