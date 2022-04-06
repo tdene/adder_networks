@@ -86,7 +86,7 @@ def pnr_power(path):
     return ret
 
 def num_cells(path):
-    path += "/synthesis/1-synthesis.stat.rpt.strategy4"
+    path += "/synthesis/1-synthesis.AREA 0.stat.rpt"
     ret = None
     with open(path) as f:
         while ret is None:
