@@ -108,6 +108,25 @@ def capitalize_name(s):
 def main():
     w,names,scl,target,target_density = init()
     target = Q_(target,'ns')
+
+    header = []
+    header.append("Width (# of bits)")
+    header.append("Adder architecture")
+    header.append("Target density")
+    header.append("Std Cell count")
+    header.append("Worst path delay")
+    header.append("Maximum frequency")
+    header.append("Area")
+    header.append("Power")
+    header.append("Energy")
+    header.append("Achieved density")
+    header.append("Worst path delay")
+    header.append("Maximum frequency")
+    header.append("Area")
+    header.append("Power")
+    header.append("Energy")
+    print(*header,sep=',')
+
     for n in names:
         path = parse_path(w,scl,n)
 
