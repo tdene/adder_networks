@@ -34,7 +34,7 @@ def synth_timing(path):
     return ret
 
 def synth_area(path):
-    path += "/synthesis/1-synthesis.stat.rpt.strategy4"
+    path += "/synthesis/1-synthesis.AREA 0.stat.rpt"
     ret = None
     with open(path) as f:
         while ret is None:
@@ -140,18 +140,18 @@ def main():
         data.append(cells)
 
         data.append("{:~P}".format(round(p_timing.to('ns'),2)))
-        data.append("{:~P}".format(round((1.0/p_timing).to('MHz'),2)))
-        data.append("{:~P}".format(round(p_area[0],2)))
-        data.append("{:~P}".format(round(adj_p_power.to('uW'),2)))
-        data.append("{:~P}".format(round(p_energy.to('fJ'),2)))
+        data.append("{:~P}".format(round((1.0/p_timing).to('MHz'),0)))
+        data.append("{:~P}".format(round(p_area[0],0)))
+        data.append("{:~P}".format(round(adj_p_power.to('uW'),0)))
+        data.append("{:~P}".format(round(p_energy.to('fJ'),0)))
 
         data.append(p_area[1])
 
         data.append("{:~P}".format(round(s_timing.to('ns'),2)))
-        data.append("{:~P}".format(round((1.0/s_timing).to('MHz'),2)))
-        data.append("{:~P}".format(round(s_area,2)))
-        data.append("{:~P}".format(round(adj_s_power.to('uW'),2)))
-        data.append("{:~P}".format(round(s_energy.to('fJ'),2)))
+        data.append("{:~P}".format(round((1.0/s_timing).to('MHz'),0)))
+        data.append("{:~P}".format(round(s_area,0)))
+        data.append("{:~P}".format(round(adj_s_power.to('uW'),0)))
+        data.append("{:~P}".format(round(s_energy.to('fJ'),0)))
         
         print(*data,sep=',')
     print()
