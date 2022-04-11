@@ -27,6 +27,8 @@ def parse_path(width,scl,name):
 def synth_timing(base_path):
     path = base_path / "synthesis/2-synthesis_sta.max.rpt"
     if not path.exists():
+        path = base_path / "synthesis/2-syn_sta.max.rpt"
+    if not path.exists():
         raise FileNotFoundError(path)
 
     with open(path) as f:
@@ -37,9 +39,9 @@ def synth_timing(base_path):
     return None
 
 def synth_area(base_path):
-    path = base_path / "synthesis/1-synthesis.AREA 0.stat.rpt"
+    path = base_path / "synthesis/1-synthesis.stat.rpt.strategy4"
     if not path.exists():
-        path = base_path / "synthesis/1-synthesis.stat.rpt.strategy4"
+        path = base_path / "synthesis/1-synthesis.AREA 0.stat.rpt"
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -52,6 +54,8 @@ def synth_area(base_path):
 
 def synth_power(base_path):
     path = base_path / "synthesis/2-synthesis_sta.power.rpt"
+    if not path.exists():
+        path = base_path / "synthesis/2-syn_sta.power.rpt"
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -102,9 +106,9 @@ def pnr_power(base_path):
     return None
 
 def num_cells(base_path):
-    path = base_path / "synthesis/1-synthesis.AREA 0.stat.rpt"
+    path = base_path / "synthesis/1-synthesis.stat.rpt.strategy4"
     if not path.exists():
-        path = base_path / "synthesis/1-synthesis.stat.rpt.strategy4"
+        path = base_path / "synthesis/1-synthesis.AREA 0.stat.rpt"
     if not path.exists():
         raise FileNotFoundError(path)
 
