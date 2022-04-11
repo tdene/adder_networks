@@ -47,17 +47,17 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.19    0.00    1.45 ^ sum[7] (out)
                                   1.45   data arrival time
 
-                  0.00    0.75    0.75   clock clk (rise edge)
-                          0.00    0.75   clock network delay (ideal)
-                         -0.25    0.50   clock uncertainty
-                          0.00    0.50   clock reconvergence pessimism
-                          0.00    0.50   output external delay
-                                  0.50   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.50   data required time
+                                  0.75   data required time
                                  -1.45   data arrival time
 -----------------------------------------------------------------------------
-                                 -0.95   slack (VIOLATED)
+                                 -0.70   slack (VIOLATED)
 
 
 Startpoint: a[0] (input port clocked by clk)
@@ -102,17 +102,17 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.17    0.00    1.40 v cout (out)
                                   1.40   data arrival time
 
-                  0.00    0.75    0.75   clock clk (rise edge)
-                          0.00    0.75   clock network delay (ideal)
-                         -0.25    0.50   clock uncertainty
-                          0.00    0.50   clock reconvergence pessimism
-                          0.00    0.50   output external delay
-                                  0.50   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.50   data required time
+                                  0.75   data required time
                                  -1.40   data arrival time
 -----------------------------------------------------------------------------
-                                 -0.90   slack (VIOLATED)
+                                 -0.65   slack (VIOLATED)
 
 
 Startpoint: a[0] (input port clocked by clk)
@@ -157,17 +157,17 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.19    0.00    1.31 ^ sum[6] (out)
                                   1.31   data arrival time
 
-                  0.00    0.75    0.75   clock clk (rise edge)
-                          0.00    0.75   clock network delay (ideal)
-                         -0.25    0.50   clock uncertainty
-                          0.00    0.50   clock reconvergence pessimism
-                          0.00    0.50   output external delay
-                                  0.50   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.50   data required time
+                                  0.75   data required time
                                  -1.31   data arrival time
 -----------------------------------------------------------------------------
-                                 -0.81   slack (VIOLATED)
+                                 -0.56   slack (VIOLATED)
 
 
 Startpoint: a[0] (input port clocked by clk)
@@ -209,17 +209,17 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.19    0.00    1.16 ^ sum[5] (out)
                                   1.16   data arrival time
 
-                  0.00    0.75    0.75   clock clk (rise edge)
-                          0.00    0.75   clock network delay (ideal)
-                         -0.25    0.50   clock uncertainty
-                          0.00    0.50   clock reconvergence pessimism
-                          0.00    0.50   output external delay
-                                  0.50   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.50   data required time
+                                  0.75   data required time
                                  -1.16   data arrival time
 -----------------------------------------------------------------------------
-                                 -0.66   slack (VIOLATED)
+                                 -0.41   slack (VIOLATED)
 
 
 Startpoint: a[0] (input port clocked by clk)
@@ -258,16 +258,16 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.19    0.00    1.02 ^ sum[4] (out)
                                   1.02   data arrival time
 
-                  0.00    0.75    0.75   clock clk (rise edge)
-                          0.00    0.75   clock network delay (ideal)
-                         -0.25    0.50   clock uncertainty
-                          0.00    0.50   clock reconvergence pessimism
-                          0.00    0.50   output external delay
-                                  0.50   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.50   data required time
+                                  0.75   data required time
                                  -1.02   data arrival time
 -----------------------------------------------------------------------------
-                                 -0.52   slack (VIOLATED)
+                                 -0.27   slack (VIOLATED)
 
 

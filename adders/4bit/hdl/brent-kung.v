@@ -5,7 +5,7 @@ module adder(cout, sum, a, b, cin);
 	output [3:0] sum;
 	output cout;
 
-	wire g1, g2, p2, p_lsb, g0, p1, g_lsb, p0;
+	wire p0, g2, p2, g1, p1, p_lsb, g_lsb, g0;
 	wire n12, n13, n14, n15, n16, n18, n19, n21, n22, n23, n24, n25, n26, n37, n40, n42, n44, n53;
 
 // start of pre-processing logic
@@ -67,15 +67,6 @@ module ppa_first_pre(cin, pout, gout);
 
 endmodule
 
-module ppa_post(pin, gin, sum);
-
-	input pin, gin;
-	output sum;
-
-	xor2 U1(sum,pin,gin);
-
-endmodule
-
 module ppa_grey(gin, pin, gout);
 
 	input[1:0] gin;
@@ -113,5 +104,14 @@ module ppa_buffer(pin, gin, pout, gout);
 
 	buffer U1(pout,pin);
 	buffer U2(gout,gin);
+
+endmodule
+
+module ppa_post(pin, gin, sum);
+
+	input pin, gin;
+	output sum;
+
+	xor2 U1(sum,pin,gin);
 
 endmodule

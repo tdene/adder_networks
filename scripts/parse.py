@@ -1,5 +1,6 @@
 import argparse
 from pint import UnitRegistry
+from pathlib import Path
 
 Q_ = UnitRegistry().Quantity
 
@@ -19,81 +20,100 @@ def init():
 
 def parse_path(width,scl,name):
 
-    path = "adders/{0}bit/reports/{1}/{2}".format(width,scl,name)
+    path = Path("adders/{0}bit/reports/{1}/{2}".format(width,scl,name))
 
     return path
 
-def synth_timing(path):
-    path += "/synthesis/2-synthesis_sta.max.rpt"
-    ret = None
-    with open(path) as f:
-        while ret is None:
-            l = f.readline().split()
-            if ('arrival' in l):
-                ret = Q_(float(l[0]),'ns')
-    return ret
+def synth_timing(base_path):
+    path = base_path / "synthesis/2-synthesis_sta.max.rpt"
+    if not path.exists():
+        raise FileNotFoundError(path)
 
-def synth_area(path):
-    path += "/synthesis/1-synthesis.AREA 0.stat.rpt"
-    ret = None
     with open(path) as f:
-        while ret is None:
-            l = f.readline().split()
+        for line in f:
+            l = line.split()
+            if ('arrival' in l):
+                return Q_(float(l[0]),'ns')
+    return None
+
+def synth_area(base_path):
+    path = base_path / "synthesis/1-synthesis.AREA 0.stat.rpt"
+    if not path.exists():
+        path = base_path / "synthesis/1-synthesis.stat.rpt.strategy4"
+    if not path.exists():
+        raise FileNotFoundError(path)
+
+    with open(path) as f:
+        for line in f:
+            l = line.split()
             if ('area' in l):
-                ret = Q_(float(l[-1]),'um^2')
-    return ret
+                return Q_(float(l[-1]),'um^2')
+    return None
 
-def synth_power(path):
-    path += "/synthesis/2-synthesis_sta.power.rpt"
-    ret = None
+def synth_power(base_path):
+    path = base_path / "synthesis/2-synthesis_sta.power.rpt"
+    if not path.exists():
+        raise FileNotFoundError(path)
+
     with open(path) as f:
-        while ret is None:
-            l = f.readline().split()
+        for line in f:
+            l = line.split()
             if ('Total' in l and '100.0%' in l):
-                ret = Q_(float(l[-2]),'W')
-    return ret
+                return Q_(float(l[-2]),'W')
+    return None
 
-def pnr_timing(path):
-    path += "/routing/24-parasitics_multi_corner_sta.max.rpt"
-    ret = None
+def pnr_timing(base_path):
+    path = base_path / "routing/24-parasitics_multi_corner_sta.max.rpt"
+    if not path.exists():
+        raise FileNotFoundError(path)
+
     with open(path) as f:
-        while ret is None:
-            l = f.readline().split()
+        for line in f:
+            l = line.split()
             if ('arrival' in l):
-                ret = Q_(float(l[0]),'ns')
-    return ret
+                return Q_(float(l[0]),'ns')
+    return None
 
-def pnr_area(path):
-    path += "/placement/8-resizer_sta.area.rpt"
-    ret = None
+def pnr_area(base_path):
+    path = base_path / "routing/24-parasitics_multi_corner_sta.area.rpt"
+    if not path.exists():
+        raise FileNotFoundError(path)
+
     with open(path) as f:
-        while ret is None:
-            l = f.readline().split()
+        for line in f:
+            l = line.split()
             if ('utilization.' in l):
                 return (Q_(float(l[2]),'um^2'),l[4])
+    return None
 
-def pnr_power(path):
-    path += "/routing/24-parasitics_multi_corner_sta.power.rpt"
-    ret = None
+def pnr_power(base_path):
+    path = base_path / "routing/24-parasitics_multi_corner_sta.power.rpt"
+    if not path.exists():
+        raise FileNotFoundError(path)
+
     flag = False
     with open(path) as f:
-        while ret is None:
-            l = f.readline().split()
+        for line in f:
+            l = line.split()
             if ('Typical' in l):
                 flag = True
             if (flag and 'Total' in l and '100.0%' in l):
-                ret = Q_(float(l[-2]),'W')
-    return ret
+                return Q_(float(l[-2]),'W')
+    return None
 
-def num_cells(path):
-    path += "/synthesis/1-synthesis.AREA 0.stat.rpt"
-    ret = None
+def num_cells(base_path):
+    path = base_path / "synthesis/1-synthesis.AREA 0.stat.rpt"
+    if not path.exists():
+        path = base_path / "synthesis/1-synthesis.stat.rpt.strategy4"
+    if not path.exists():
+        raise FileNotFoundError(path)
+
     with open(path) as f:
-        while ret is None:
-            l = f.readline().split()
+        for line in f:
+            l = line.split()
             if ('cells:' in l):
-                ret = int(l[-1])
-    return ret
+                return int(l[-1])
+    return None
 
 def add_tabs(s,n,not_first=True):
     s=str(s)
@@ -172,6 +192,8 @@ def main():
         data.append("{:~P}".format(round(adj_s_power.to('uW'),0)))
         data.append("{:~P}".format(round(s_energy.to('fJ'),0)))
         
+        data = [d.replace(".0 "," ") if isinstance(d,str) else d for d in data]
+
         print(*data,sep=',')
     print()
 

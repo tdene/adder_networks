@@ -6,6 +6,56 @@ report_checks -path_delay max (Setup)
 ======================= Slowest Corner ===================================
 
 Startpoint: a[0] (input port clocked by clk)
+Endpoint: sum[0] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+Corner: ss
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 v input external delay
+                  0.03    0.02    0.02 v a[0] (in)
+     1    0.01                           a[0] (net)
+                  0.03    0.00    0.02 v input1/A (sky130_fd_sc_hd__buf_6)
+                  0.04    0.19    0.21 v input1/X (sky130_fd_sc_hd__buf_6)
+     2    0.01                           net1 (net)
+                  0.04    0.00    0.21 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
+                  0.13    0.31    0.53 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     2    0.01                           ppa_grey_1_1.U1.A1 (net)
+                  0.13    0.00    0.53 v rebuffer4/A (sky130_fd_sc_hd__dlygate4sd1_1)
+                  0.06    0.52    1.04 v rebuffer4/X (sky130_fd_sc_hd__dlygate4sd1_1)
+     1    0.00                           net18 (net)
+                  0.06    0.00    1.04 v rebuffer3/A (sky130_fd_sc_hd__dlygate4sd1_1)
+                  0.08    0.52    1.56 v rebuffer3/X (sky130_fd_sc_hd__dlygate4sd1_1)
+     1    0.01                           net17 (net)
+                  0.08    0.00    1.56 v ppa_post_0_4.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
+                  0.10    0.31    1.87 v ppa_post_0_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     1    0.00                           ppa_post_0_4.U1.Y (net)
+                  0.10    0.00    1.87 v _0_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.04    0.17    2.04 v _0_/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.00                           net11 (net)
+                  0.04    0.00    2.04 v output11/A (sky130_fd_sc_hd__buf_2)
+                  0.17    0.35    2.39 v output11/X (sky130_fd_sc_hd__buf_2)
+     1    0.03                           sum[0] (net)
+                  0.17    0.00    2.39 v sum[0] (out)
+                                  2.39   data arrival time
+
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
+-----------------------------------------------------------------------------
+                                  0.75   data required time
+                                 -2.39   data arrival time
+-----------------------------------------------------------------------------
+                                 -1.64   slack (VIOLATED)
+
+
+Startpoint: a[0] (input port clocked by clk)
 Endpoint: sum[3] (output port clocked by clk)
 Path Group: clk
 Path Type: max
@@ -22,143 +72,40 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.04    0.19    0.21 v input1/X (sky130_fd_sc_hd__buf_6)
      2    0.01                           net1 (net)
                   0.04    0.00    0.21 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.14    0.32    0.53 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.13    0.31    0.53 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.14    0.00    0.53 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
-                  0.08    0.38    0.92 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.13    0.00    0.53 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.08    0.38    0.91 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_1_1.U1.Y (net)
-                  0.08    0.00    0.92 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.09    0.34    1.26 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.08    0.00    0.91 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.09    0.34    1.24 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_2_2.U1.Y (net)
-                  0.09    0.00    1.26 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.10    0.35    1.61 v ppa_grey_3_3.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.09    0.00    1.24 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.11    0.36    1.60 v ppa_grey_3_3.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_3_3.U1.Y (net)
-                  0.10    0.00    1.61 v ppa_post_3_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.11    0.29    1.90 v ppa_post_3_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.11    0.00    1.60 v ppa_post_3_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
+                  0.11    0.29    1.89 v ppa_post_3_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      1    0.00                           ppa_post_3_4.U1.Y (net)
-                  0.11    0.00    1.90 v _3_/A (sky130_fd_sc_hd__buf_2)
-                  0.06    0.28    2.18 v _3_/X (sky130_fd_sc_hd__buf_2)
-     1    0.01                           net14 (net)
-                  0.06    0.00    2.18 v output14/A (sky130_fd_sc_hd__buf_6)
-                  0.08    0.26    2.43 v output14/X (sky130_fd_sc_hd__buf_6)
+                  0.11    0.00    1.89 v _3_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.07    0.20    2.09 v _3_/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.00                           net14 (net)
+                  0.07    0.00    2.09 v output14/A (sky130_fd_sc_hd__buf_6)
+                  0.08    0.26    2.35 v output14/X (sky130_fd_sc_hd__buf_6)
      1    0.03                           sum[3] (net)
-                  0.08    0.00    2.43 v sum[3] (out)
-                                  2.43   data arrival time
+                  0.08    0.00    2.35 v sum[3] (out)
+                                  2.35   data arrival time
 
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -2.43   data arrival time
+                                  0.75   data required time
+                                 -2.35   data arrival time
 -----------------------------------------------------------------------------
-                                 -2.18   slack (VIOLATED)
-
-
-Startpoint: a[0] (input port clocked by clk)
-Endpoint: sum[2] (output port clocked by clk)
-Path Group: clk
-Path Type: max
-Corner: ss
-
-Fanout     Cap    Slew   Delay    Time   Description
------------------------------------------------------------------------------
-                  0.00    0.00    0.00   clock clk (rise edge)
-                          0.00    0.00   clock network delay (ideal)
-                          0.00    0.00 v input external delay
-                  0.03    0.02    0.02 v a[0] (in)
-     1    0.01                           a[0] (net)
-                  0.03    0.00    0.02 v input1/A (sky130_fd_sc_hd__buf_6)
-                  0.04    0.19    0.21 v input1/X (sky130_fd_sc_hd__buf_6)
-     2    0.01                           net1 (net)
-                  0.04    0.00    0.21 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.14    0.32    0.53 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.14    0.00    0.53 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
-                  0.08    0.38    0.92 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
-     2    0.01                           ppa_grey_1_1.U1.Y (net)
-                  0.08    0.00    0.92 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.09    0.34    1.26 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
-     2    0.01                           ppa_grey_2_2.U1.Y (net)
-                  0.09    0.00    1.26 v rebuffer2/A (sky130_fd_sc_hd__buf_2)
-                  0.05    0.26    1.52 v rebuffer2/X (sky130_fd_sc_hd__buf_2)
-     1    0.00                           net16 (net)
-                  0.05    0.00    1.52 v ppa_post_2_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.11    0.27    1.79 v ppa_post_2_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     1    0.00                           ppa_post_2_4.U1.Y (net)
-                  0.11    0.00    1.79 v _2_/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.05    0.19    1.98 v _2_/X (sky130_fd_sc_hd__clkbuf_1)
-     1    0.00                           net13 (net)
-                  0.05    0.00    1.98 v output13/A (sky130_fd_sc_hd__buf_2)
-                  0.17    0.36    2.34 v output13/X (sky130_fd_sc_hd__buf_2)
-     1    0.03                           sum[2] (net)
-                  0.17    0.00    2.34 v sum[2] (out)
-                                  2.34   data arrival time
-
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
------------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -2.34   data arrival time
------------------------------------------------------------------------------
-                                 -2.09   slack (VIOLATED)
-
-
-Startpoint: a[0] (input port clocked by clk)
-Endpoint: cout (output port clocked by clk)
-Path Group: clk
-Path Type: max
-Corner: ss
-
-Fanout     Cap    Slew   Delay    Time   Description
------------------------------------------------------------------------------
-                  0.00    0.00    0.00   clock clk (rise edge)
-                          0.00    0.00   clock network delay (ideal)
-                          0.00    0.00 v input external delay
-                  0.03    0.02    0.02 v a[0] (in)
-     1    0.01                           a[0] (net)
-                  0.03    0.00    0.02 v input1/A (sky130_fd_sc_hd__buf_6)
-                  0.04    0.19    0.21 v input1/X (sky130_fd_sc_hd__buf_6)
-     2    0.01                           net1 (net)
-                  0.04    0.00    0.21 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.14    0.32    0.53 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.14    0.00    0.53 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
-                  0.08    0.38    0.92 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
-     2    0.01                           ppa_grey_1_1.U1.Y (net)
-                  0.08    0.00    0.92 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.09    0.34    1.26 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
-     2    0.01                           ppa_grey_2_2.U1.Y (net)
-                  0.09    0.00    1.26 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.10    0.35    1.61 v ppa_grey_3_3.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
-     2    0.01                           ppa_grey_3_3.U1.Y (net)
-                  0.10    0.00    1.61 v ppa_grey_cout.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.07    0.32    1.93 v ppa_grey_cout.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
-     1    0.00                           net10 (net)
-                  0.07    0.00    1.93 v output10/A (sky130_fd_sc_hd__buf_2)
-                  0.17    0.37    2.30 v output10/X (sky130_fd_sc_hd__buf_2)
-     1    0.03                           cout (net)
-                  0.17    0.00    2.30 v cout (out)
-                                  2.30   data arrival time
-
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
------------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -2.30   data arrival time
------------------------------------------------------------------------------
-                                 -2.05   slack (VIOLATED)
+                                 -1.60   slack (VIOLATED)
 
 
 Startpoint: a[0] (input port clocked by clk)
@@ -178,41 +125,41 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.04    0.19    0.21 v input1/X (sky130_fd_sc_hd__buf_6)
      2    0.01                           net1 (net)
                   0.04    0.00    0.21 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.14    0.32    0.53 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.13    0.31    0.53 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.14    0.00    0.53 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
-                  0.08    0.38    0.92 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.13    0.00    0.53 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.08    0.38    0.91 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_1_1.U1.Y (net)
-                  0.08    0.00    0.92 v rebuffer3/A (sky130_fd_sc_hd__dlygate4sd1_1)
-                  0.08    0.52    1.44 v rebuffer3/X (sky130_fd_sc_hd__dlygate4sd1_1)
-     1    0.01                           net17 (net)
-                  0.08    0.00    1.44 v ppa_post_1_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.11    0.28    1.72 v ppa_post_1_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.08    0.00    0.91 v rebuffer1/A (sky130_fd_sc_hd__dlygate4sd1_1)
+                  0.08    0.52    1.43 v rebuffer1/X (sky130_fd_sc_hd__dlygate4sd1_1)
+     1    0.00                           net15 (net)
+                  0.08    0.00    1.43 v ppa_post_1_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
+                  0.21    0.24    1.67 ^ ppa_post_1_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      1    0.00                           ppa_post_1_4.U1.Y (net)
-                  0.11    0.00    1.72 v _1_/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.05    0.19    1.91 v _1_/X (sky130_fd_sc_hd__clkbuf_1)
+                  0.21    0.00    1.67 ^ _1_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.09    0.23    1.90 ^ _1_/X (sky130_fd_sc_hd__clkbuf_1)
      1    0.00                           net12 (net)
-                  0.05    0.00    1.91 v output12/A (sky130_fd_sc_hd__buf_2)
-                  0.17    0.35    2.26 v output12/X (sky130_fd_sc_hd__buf_2)
+                  0.09    0.00    1.90 ^ output12/A (sky130_fd_sc_hd__buf_2)
+                  0.27    0.37    2.27 ^ output12/X (sky130_fd_sc_hd__buf_2)
      1    0.03                           sum[1] (net)
-                  0.17    0.00    2.26 v sum[1] (out)
-                                  2.26   data arrival time
+                  0.27    0.00    2.27 ^ sum[1] (out)
+                                  2.27   data arrival time
 
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -2.26   data arrival time
+                                  0.75   data required time
+                                 -2.27   data arrival time
 -----------------------------------------------------------------------------
-                                 -2.01   slack (VIOLATED)
+                                 -1.52   slack (VIOLATED)
 
 
-Startpoint: b[0] (input port clocked by clk)
-Endpoint: sum[0] (output port clocked by clk)
+Startpoint: a[0] (input port clocked by clk)
+Endpoint: cout (output port clocked by clk)
 Path Group: clk
 Path Type: max
 Corner: ss
@@ -221,41 +168,97 @@ Fanout     Cap    Slew   Delay    Time   Description
 -----------------------------------------------------------------------------
                   0.00    0.00    0.00   clock clk (rise edge)
                           0.00    0.00   clock network delay (ideal)
-                          0.00    0.00 ^ input external delay
-                  0.04    0.03    0.03 ^ b[0] (in)
-     1    0.00                           b[0] (net)
-                  0.04    0.00    0.03 ^ input5/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.17    0.22    0.24 ^ input5/X (sky130_fd_sc_hd__clkbuf_1)
-     2    0.01                           net5 (net)
-                  0.17    0.00    0.24 ^ ppa_pre_1_0.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.29    0.38    0.62 ^ ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                          0.00    0.00 v input external delay
+                  0.03    0.02    0.02 v a[0] (in)
+     1    0.01                           a[0] (net)
+                  0.03    0.00    0.02 v input1/A (sky130_fd_sc_hd__buf_6)
+                  0.04    0.19    0.21 v input1/X (sky130_fd_sc_hd__buf_6)
+     2    0.01                           net1 (net)
+                  0.04    0.00    0.21 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
+                  0.13    0.31    0.53 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.29    0.00    0.62 ^ rebuffer1/A (sky130_fd_sc_hd__dlygate4sd1_1)
-                  0.10    0.50    1.13 ^ rebuffer1/X (sky130_fd_sc_hd__dlygate4sd1_1)
-     1    0.01                           net15 (net)
-                  0.10    0.00    1.13 ^ ppa_post_0_4.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.18    0.25    1.38 ^ ppa_post_0_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     1    0.00                           ppa_post_0_4.U1.Y (net)
-                  0.18    0.00    1.38 ^ _0_/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.08    0.21    1.59 ^ _0_/X (sky130_fd_sc_hd__clkbuf_1)
-     1    0.00                           net11 (net)
-                  0.08    0.00    1.59 ^ output11/A (sky130_fd_sc_hd__buf_2)
-                  0.27    0.37    1.96 ^ output11/X (sky130_fd_sc_hd__buf_2)
-     1    0.03                           sum[0] (net)
-                  0.27    0.00    1.96 ^ sum[0] (out)
-                                  1.96   data arrival time
+                  0.13    0.00    0.53 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.08    0.38    0.91 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+     2    0.01                           ppa_grey_1_1.U1.Y (net)
+                  0.08    0.00    0.91 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.09    0.34    1.24 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+     2    0.01                           ppa_grey_2_2.U1.Y (net)
+                  0.09    0.00    1.24 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.11    0.36    1.60 v ppa_grey_3_3.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+     2    0.01                           ppa_grey_3_3.U1.Y (net)
+                  0.11    0.00    1.60 v ppa_grey_cout.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.31    1.91 v ppa_grey_cout.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+     1    0.00                           net10 (net)
+                  0.05    0.00    1.91 v output10/A (sky130_fd_sc_hd__buf_2)
+                  0.17    0.36    2.27 v output10/X (sky130_fd_sc_hd__buf_2)
+     1    0.03                           cout (net)
+                  0.17    0.00    2.27 v cout (out)
+                                  2.27   data arrival time
 
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -1.96   data arrival time
+                                  0.75   data required time
+                                 -2.27   data arrival time
 -----------------------------------------------------------------------------
-                                 -1.71   slack (VIOLATED)
+                                 -1.52   slack (VIOLATED)
+
+
+Startpoint: a[0] (input port clocked by clk)
+Endpoint: sum[2] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+Corner: ss
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 v input external delay
+                  0.03    0.02    0.02 v a[0] (in)
+     1    0.01                           a[0] (net)
+                  0.03    0.00    0.02 v input1/A (sky130_fd_sc_hd__buf_6)
+                  0.04    0.19    0.21 v input1/X (sky130_fd_sc_hd__buf_6)
+     2    0.01                           net1 (net)
+                  0.04    0.00    0.21 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
+                  0.13    0.31    0.53 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     2    0.01                           ppa_grey_1_1.U1.A1 (net)
+                  0.13    0.00    0.53 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.08    0.38    0.91 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+     2    0.01                           ppa_grey_1_1.U1.Y (net)
+                  0.08    0.00    0.91 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.09    0.34    1.24 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+     2    0.01                           ppa_grey_2_2.U1.Y (net)
+                  0.09    0.00    1.24 v rebuffer2/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.07    0.20    1.44 v rebuffer2/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.01                           net16 (net)
+                  0.07    0.00    1.44 v ppa_post_2_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
+                  0.11    0.27    1.72 v ppa_post_2_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     1    0.00                           ppa_post_2_4.U1.Y (net)
+                  0.11    0.00    1.72 v _2_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.05    0.19    1.90 v _2_/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.00                           net13 (net)
+                  0.05    0.00    1.90 v output13/A (sky130_fd_sc_hd__buf_2)
+                  0.17    0.35    2.26 v output13/X (sky130_fd_sc_hd__buf_2)
+     1    0.03                           sum[2] (net)
+                  0.17    0.00    2.26 v sum[2] (out)
+                                  2.26   data arrival time
+
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
+-----------------------------------------------------------------------------
+                                  0.75   data required time
+                                 -2.26   data arrival time
+-----------------------------------------------------------------------------
+                                 -1.51   slack (VIOLATED)
 
 
 
@@ -278,40 +281,90 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.02    0.10    0.11 v input1/X (sky130_fd_sc_hd__buf_6)
      2    0.01                           net1 (net)
                   0.02    0.00    0.11 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.07    0.17    0.28 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.06    0.16    0.28 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.07    0.00    0.28 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
-                  0.04    0.20    0.48 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.06    0.00    0.28 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.20    0.48 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_1_1.U1.Y (net)
-                  0.04    0.00    0.48 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.05    0.18    0.66 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.00    0.48 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.17    0.65 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_2_2.U1.Y (net)
-                  0.05    0.00    0.66 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.05    0.18    0.84 v ppa_grey_3_3.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.00    0.65 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.06    0.19    0.84 v ppa_grey_3_3.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_3_3.U1.Y (net)
-                  0.05    0.00    0.84 v ppa_post_3_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.06    0.15    0.99 v ppa_post_3_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.06    0.00    0.84 v ppa_post_3_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
+                  0.11    0.13    0.97 ^ ppa_post_3_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      1    0.00                           ppa_post_3_4.U1.Y (net)
-                  0.06    0.00    0.99 v _3_/A (sky130_fd_sc_hd__buf_2)
-                  0.03    0.14    1.13 v _3_/X (sky130_fd_sc_hd__buf_2)
+                  0.11    0.00    0.97 ^ _3_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.07    0.12    1.10 ^ _3_/X (sky130_fd_sc_hd__clkbuf_1)
      1    0.01                           net14 (net)
-                  0.03    0.00    1.13 v output14/A (sky130_fd_sc_hd__buf_6)
-                  0.04    0.14    1.27 v output14/X (sky130_fd_sc_hd__buf_6)
+                  0.07    0.00    1.10 ^ output14/A (sky130_fd_sc_hd__buf_6)
+                  0.08    0.14    1.24 ^ output14/X (sky130_fd_sc_hd__buf_6)
      1    0.03                           sum[3] (net)
-                  0.04    0.00    1.27 v sum[3] (out)
-                                  1.27   data arrival time
+                  0.08    0.00    1.24 ^ sum[3] (out)
+                                  1.24   data arrival time
 
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -1.27   data arrival time
+                                  0.75   data required time
+                                 -1.24   data arrival time
 -----------------------------------------------------------------------------
-                                 -1.02   slack (VIOLATED)
+                                 -0.49   slack (VIOLATED)
+
+
+Startpoint: a[0] (input port clocked by clk)
+Endpoint: sum[0] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+Corner: tt
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 v input external delay
+                  0.01    0.01    0.01 v a[0] (in)
+     1    0.01                           a[0] (net)
+                  0.01    0.00    0.01 v input1/A (sky130_fd_sc_hd__buf_6)
+                  0.02    0.10    0.11 v input1/X (sky130_fd_sc_hd__buf_6)
+     2    0.01                           net1 (net)
+                  0.02    0.00    0.11 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
+                  0.06    0.16    0.28 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     2    0.01                           ppa_grey_1_1.U1.A1 (net)
+                  0.06    0.00    0.28 v rebuffer4/A (sky130_fd_sc_hd__dlygate4sd1_1)
+                  0.03    0.24    0.52 v rebuffer4/X (sky130_fd_sc_hd__dlygate4sd1_1)
+     1    0.00                           net18 (net)
+                  0.03    0.00    0.52 v rebuffer3/A (sky130_fd_sc_hd__dlygate4sd1_1)
+                  0.04    0.24    0.76 v rebuffer3/X (sky130_fd_sc_hd__dlygate4sd1_1)
+     1    0.01                           net17 (net)
+                  0.04    0.00    0.76 v ppa_post_0_4.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
+                  0.11    0.14    0.91 ^ ppa_post_0_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     1    0.00                           ppa_post_0_4.U1.Y (net)
+                  0.11    0.00    0.91 ^ _0_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.04    0.10    1.00 ^ _0_/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.00                           net11 (net)
+                  0.04    0.00    1.00 ^ output11/A (sky130_fd_sc_hd__buf_2)
+                  0.17    0.21    1.21 ^ output11/X (sky130_fd_sc_hd__buf_2)
+     1    0.03                           sum[0] (net)
+                  0.17    0.00    1.21 ^ sum[0] (out)
+                                  1.21   data arrival time
+
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
+-----------------------------------------------------------------------------
+                                  0.75   data required time
+                                 -1.21   data arrival time
+-----------------------------------------------------------------------------
+                                 -0.46   slack (VIOLATED)
 
 
 Startpoint: a[0] (input port clocked by clk)
@@ -331,40 +384,90 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.02    0.10    0.11 v input1/X (sky130_fd_sc_hd__buf_6)
      2    0.01                           net1 (net)
                   0.02    0.00    0.11 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.07    0.17    0.28 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.06    0.16    0.28 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.07    0.00    0.28 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
-                  0.04    0.20    0.48 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.06    0.00    0.28 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.20    0.48 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_1_1.U1.Y (net)
-                  0.04    0.00    0.48 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.05    0.18    0.66 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.00    0.48 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.17    0.65 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_2_2.U1.Y (net)
-                  0.05    0.00    0.66 v rebuffer2/A (sky130_fd_sc_hd__buf_2)
-                  0.03    0.13    0.79 v rebuffer2/X (sky130_fd_sc_hd__buf_2)
-     1    0.00                           net16 (net)
-                  0.03    0.00    0.79 v ppa_post_2_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.12    0.13    0.92 ^ ppa_post_2_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.05    0.00    0.65 v rebuffer2/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.04    0.10    0.76 v rebuffer2/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.01                           net16 (net)
+                  0.04    0.00    0.76 v ppa_post_2_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
+                  0.11    0.13    0.88 ^ ppa_post_2_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      1    0.00                           ppa_post_2_4.U1.Y (net)
-                  0.12    0.00    0.92 ^ _2_/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.05    0.11    1.03 ^ _2_/X (sky130_fd_sc_hd__clkbuf_1)
+                  0.11    0.00    0.88 ^ _2_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.05    0.11    0.99 ^ _2_/X (sky130_fd_sc_hd__clkbuf_1)
      1    0.00                           net13 (net)
-                  0.05    0.00    1.03 ^ output13/A (sky130_fd_sc_hd__buf_2)
-                  0.18    0.22    1.24 ^ output13/X (sky130_fd_sc_hd__buf_2)
+                  0.05    0.00    0.99 ^ output13/A (sky130_fd_sc_hd__buf_2)
+                  0.17    0.21    1.20 ^ output13/X (sky130_fd_sc_hd__buf_2)
      1    0.03                           sum[2] (net)
-                  0.18    0.00    1.25 ^ sum[2] (out)
-                                  1.25   data arrival time
+                  0.17    0.00    1.20 ^ sum[2] (out)
+                                  1.20   data arrival time
 
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -1.25   data arrival time
+                                  0.75   data required time
+                                 -1.20   data arrival time
 -----------------------------------------------------------------------------
-                                 -1.00   slack (VIOLATED)
+                                 -0.45   slack (VIOLATED)
+
+
+Startpoint: a[0] (input port clocked by clk)
+Endpoint: sum[1] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+Corner: tt
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 v input external delay
+                  0.01    0.01    0.01 v a[0] (in)
+     1    0.01                           a[0] (net)
+                  0.01    0.00    0.01 v input1/A (sky130_fd_sc_hd__buf_6)
+                  0.02    0.10    0.11 v input1/X (sky130_fd_sc_hd__buf_6)
+     2    0.01                           net1 (net)
+                  0.02    0.00    0.11 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
+                  0.06    0.16    0.28 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     2    0.01                           ppa_grey_1_1.U1.A1 (net)
+                  0.06    0.00    0.28 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.20    0.48 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+     2    0.01                           ppa_grey_1_1.U1.Y (net)
+                  0.05    0.00    0.48 v rebuffer1/A (sky130_fd_sc_hd__dlygate4sd1_1)
+                  0.04    0.25    0.72 v rebuffer1/X (sky130_fd_sc_hd__dlygate4sd1_1)
+     1    0.00                           net15 (net)
+                  0.04    0.00    0.72 v ppa_post_1_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
+                  0.13    0.14    0.86 ^ ppa_post_1_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     1    0.00                           ppa_post_1_4.U1.Y (net)
+                  0.13    0.00    0.86 ^ _1_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.06    0.12    0.98 ^ _1_/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.00                           net12 (net)
+                  0.06    0.00    0.98 ^ output12/A (sky130_fd_sc_hd__buf_2)
+                  0.17    0.21    1.19 ^ output12/X (sky130_fd_sc_hd__buf_2)
+     1    0.03                           sum[1] (net)
+                  0.17    0.00    1.19 ^ sum[1] (out)
+                                  1.19   data arrival time
+
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
+-----------------------------------------------------------------------------
+                                  0.75   data required time
+                                 -1.19   data arrival time
+-----------------------------------------------------------------------------
+                                 -0.44   slack (VIOLATED)
 
 
 Startpoint: a[0] (input port clocked by clk)
@@ -384,134 +487,37 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.02    0.10    0.11 v input1/X (sky130_fd_sc_hd__buf_6)
      2    0.01                           net1 (net)
                   0.02    0.00    0.11 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.07    0.17    0.28 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.06    0.16    0.28 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.07    0.00    0.28 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
-                  0.04    0.20    0.48 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.06    0.00    0.28 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.20    0.48 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_1_1.U1.Y (net)
-                  0.04    0.00    0.48 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.05    0.18    0.66 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.00    0.48 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.17    0.65 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_2_2.U1.Y (net)
-                  0.05    0.00    0.66 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.05    0.18    0.84 v ppa_grey_3_3.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.00    0.65 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.06    0.19    0.84 v ppa_grey_3_3.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_3_3.U1.Y (net)
-                  0.05    0.00    0.84 v ppa_grey_cout.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.04    0.17    1.01 v ppa_grey_cout.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.06    0.00    0.84 v ppa_grey_cout.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.03    0.16    1.00 v ppa_grey_cout.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      1    0.00                           net10 (net)
-                  0.04    0.00    1.01 v output10/A (sky130_fd_sc_hd__buf_2)
-                  0.09    0.19    1.20 v output10/X (sky130_fd_sc_hd__buf_2)
+                  0.03    0.00    1.00 v output10/A (sky130_fd_sc_hd__buf_2)
+                  0.09    0.18    1.18 v output10/X (sky130_fd_sc_hd__buf_2)
      1    0.03                           cout (net)
-                  0.09    0.00    1.20 v cout (out)
-                                  1.20   data arrival time
+                  0.09    0.00    1.19 v cout (out)
+                                  1.19   data arrival time
 
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -1.20   data arrival time
+                                  0.75   data required time
+                                 -1.19   data arrival time
 -----------------------------------------------------------------------------
-                                 -0.95   slack (VIOLATED)
-
-
-Startpoint: b[0] (input port clocked by clk)
-Endpoint: sum[1] (output port clocked by clk)
-Path Group: clk
-Path Type: max
-Corner: tt
-
-Fanout     Cap    Slew   Delay    Time   Description
------------------------------------------------------------------------------
-                  0.00    0.00    0.00   clock clk (rise edge)
-                          0.00    0.00   clock network delay (ideal)
-                          0.00    0.00 ^ input external delay
-                  0.03    0.02    0.02 ^ b[0] (in)
-     1    0.00                           b[0] (net)
-                  0.03    0.00    0.02 ^ input5/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.10    0.12    0.14 ^ input5/X (sky130_fd_sc_hd__clkbuf_1)
-     2    0.01                           net5 (net)
-                  0.10    0.00    0.14 ^ ppa_pre_1_0.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.18    0.21    0.35 ^ ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.18    0.00    0.35 ^ ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
-                  0.06    0.16    0.51 ^ ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
-     2    0.01                           ppa_grey_1_1.U1.Y (net)
-                  0.06    0.00    0.51 ^ rebuffer3/A (sky130_fd_sc_hd__dlygate4sd1_1)
-                  0.06    0.22    0.73 ^ rebuffer3/X (sky130_fd_sc_hd__dlygate4sd1_1)
-     1    0.01                           net17 (net)
-                  0.06    0.00    0.73 ^ ppa_post_1_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.12    0.15    0.89 ^ ppa_post_1_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     1    0.00                           ppa_post_1_4.U1.Y (net)
-                  0.12    0.00    0.89 ^ _1_/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.05    0.11    0.99 ^ _1_/X (sky130_fd_sc_hd__clkbuf_1)
-     1    0.00                           net12 (net)
-                  0.05    0.00    0.99 ^ output12/A (sky130_fd_sc_hd__buf_2)
-                  0.17    0.21    1.20 ^ output12/X (sky130_fd_sc_hd__buf_2)
-     1    0.03                           sum[1] (net)
-                  0.17    0.00    1.20 ^ sum[1] (out)
-                                  1.20   data arrival time
-
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
------------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -1.20   data arrival time
------------------------------------------------------------------------------
-                                 -0.95   slack (VIOLATED)
-
-
-Startpoint: b[0] (input port clocked by clk)
-Endpoint: sum[0] (output port clocked by clk)
-Path Group: clk
-Path Type: max
-Corner: tt
-
-Fanout     Cap    Slew   Delay    Time   Description
------------------------------------------------------------------------------
-                  0.00    0.00    0.00   clock clk (rise edge)
-                          0.00    0.00   clock network delay (ideal)
-                          0.00    0.00 ^ input external delay
-                  0.03    0.02    0.02 ^ b[0] (in)
-     1    0.00                           b[0] (net)
-                  0.03    0.00    0.02 ^ input5/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.10    0.12    0.14 ^ input5/X (sky130_fd_sc_hd__clkbuf_1)
-     2    0.01                           net5 (net)
-                  0.10    0.00    0.14 ^ ppa_pre_1_0.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.18    0.21    0.35 ^ ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.18    0.00    0.35 ^ rebuffer1/A (sky130_fd_sc_hd__dlygate4sd1_1)
-                  0.06    0.25    0.60 ^ rebuffer1/X (sky130_fd_sc_hd__dlygate4sd1_1)
-     1    0.01                           net15 (net)
-                  0.06    0.00    0.60 ^ ppa_post_0_4.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.11    0.14    0.74 ^ ppa_post_0_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     1    0.00                           ppa_post_0_4.U1.Y (net)
-                  0.11    0.00    0.74 ^ _0_/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.05    0.11    0.84 ^ _0_/X (sky130_fd_sc_hd__clkbuf_1)
-     1    0.00                           net11 (net)
-                  0.05    0.00    0.85 ^ output11/A (sky130_fd_sc_hd__buf_2)
-                  0.17    0.21    1.06 ^ output11/X (sky130_fd_sc_hd__buf_2)
-     1    0.03                           sum[0] (net)
-                  0.17    0.00    1.06 ^ sum[0] (out)
-                                  1.06   data arrival time
-
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
------------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -1.06   data arrival time
------------------------------------------------------------------------------
-                                 -0.81   slack (VIOLATED)
+                                 -0.44   slack (VIOLATED)
 
 
 
@@ -534,44 +540,44 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.02    0.07    0.07 v input1/X (sky130_fd_sc_hd__buf_6)
      2    0.01                           net1 (net)
                   0.02    0.00    0.07 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.05    0.11    0.18 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.04    0.10    0.18 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.05    0.00    0.18 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.04    0.00    0.18 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
                   0.03    0.13    0.31 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_1_1.U1.Y (net)
                   0.03    0.00    0.31 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.04    0.11    0.42 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.03    0.11    0.42 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_2_2.U1.Y (net)
-                  0.04    0.00    0.43 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.03    0.00    0.42 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
                   0.04    0.12    0.54 v ppa_grey_3_3.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_3_3.U1.Y (net)
                   0.04    0.00    0.54 v ppa_post_3_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.08    0.09    0.64 ^ ppa_post_3_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.08    0.09    0.63 ^ ppa_post_3_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      1    0.00                           ppa_post_3_4.U1.Y (net)
-                  0.08    0.00    0.64 ^ _3_/A (sky130_fd_sc_hd__buf_2)
-                  0.04    0.09    0.73 ^ _3_/X (sky130_fd_sc_hd__buf_2)
+                  0.08    0.00    0.63 ^ _3_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.05    0.08    0.71 ^ _3_/X (sky130_fd_sc_hd__clkbuf_1)
      1    0.01                           net14 (net)
-                  0.04    0.00    0.73 ^ output14/A (sky130_fd_sc_hd__buf_6)
-                  0.06    0.09    0.82 ^ output14/X (sky130_fd_sc_hd__buf_6)
+                  0.05    0.00    0.71 ^ output14/A (sky130_fd_sc_hd__buf_6)
+                  0.06    0.10    0.80 ^ output14/X (sky130_fd_sc_hd__buf_6)
      1    0.03                           sum[3] (net)
-                  0.06    0.00    0.82 ^ sum[3] (out)
-                                  0.82   data arrival time
+                  0.06    0.00    0.80 ^ sum[3] (out)
+                                  0.80   data arrival time
 
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -0.82   data arrival time
+                                  0.75   data required time
+                                 -0.80   data arrival time
 -----------------------------------------------------------------------------
-                                 -0.57   slack (VIOLATED)
+                                 -0.05   slack (VIOLATED)
 
 
 Startpoint: b[0] (input port clocked by clk)
-Endpoint: sum[2] (output port clocked by clk)
+Endpoint: sum[0] (output port clocked by clk)
 Path Group: clk
 Path Type: max
 Corner: ff
@@ -584,43 +590,93 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.02    0.01    0.01 ^ b[0] (in)
      1    0.00                           b[0] (net)
                   0.02    0.00    0.01 ^ input5/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.08    0.09    0.10 ^ input5/X (sky130_fd_sc_hd__clkbuf_1)
+                  0.07    0.08    0.09 ^ input5/X (sky130_fd_sc_hd__clkbuf_1)
      2    0.01                           net5 (net)
-                  0.08    0.00    0.10 ^ ppa_pre_1_0.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.13    0.14    0.23 ^ ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.07    0.00    0.09 ^ ppa_pre_1_0.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
+                  0.12    0.13    0.21 ^ ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.13    0.00    0.23 ^ ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
-                  0.04    0.10    0.33 ^ ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
-     2    0.01                           ppa_grey_1_1.U1.Y (net)
-                  0.04    0.00    0.33 ^ ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.06    0.09    0.42 ^ ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
-     2    0.01                           ppa_grey_2_2.U1.Y (net)
-                  0.06    0.00    0.42 ^ rebuffer2/A (sky130_fd_sc_hd__buf_2)
-                  0.03    0.08    0.50 ^ rebuffer2/X (sky130_fd_sc_hd__buf_2)
-     1    0.01                           net16 (net)
-                  0.03    0.00    0.50 ^ ppa_post_2_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.09    0.10    0.60 ^ ppa_post_2_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     1    0.00                           ppa_post_2_4.U1.Y (net)
-                  0.09    0.00    0.60 ^ _2_/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.04    0.06    0.66 ^ _2_/X (sky130_fd_sc_hd__clkbuf_1)
-     1    0.00                           net13 (net)
-                  0.04    0.00    0.66 ^ output13/A (sky130_fd_sc_hd__buf_2)
-                  0.13    0.15    0.81 ^ output13/X (sky130_fd_sc_hd__buf_2)
-     1    0.03                           sum[2] (net)
-                  0.13    0.00    0.82 ^ sum[2] (out)
-                                  0.82   data arrival time
+                  0.12    0.00    0.22 ^ rebuffer4/A (sky130_fd_sc_hd__dlygate4sd1_1)
+                  0.03    0.14    0.36 ^ rebuffer4/X (sky130_fd_sc_hd__dlygate4sd1_1)
+     1    0.00                           net18 (net)
+                  0.03    0.00    0.36 ^ rebuffer3/A (sky130_fd_sc_hd__dlygate4sd1_1)
+                  0.05    0.14    0.50 ^ rebuffer3/X (sky130_fd_sc_hd__dlygate4sd1_1)
+     1    0.01                           net17 (net)
+                  0.05    0.00    0.50 ^ ppa_post_0_4.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
+                  0.08    0.09    0.59 ^ ppa_post_0_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     1    0.00                           ppa_post_0_4.U1.Y (net)
+                  0.08    0.00    0.59 ^ _0_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.03    0.06    0.65 ^ _0_/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.00                           net11 (net)
+                  0.03    0.00    0.65 ^ output11/A (sky130_fd_sc_hd__buf_2)
+                  0.13    0.14    0.79 ^ output11/X (sky130_fd_sc_hd__buf_2)
+     1    0.03                           sum[0] (net)
+                  0.13    0.00    0.79 ^ sum[0] (out)
+                                  0.79   data arrival time
 
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -0.82   data arrival time
+                                  0.75   data required time
+                                 -0.79   data arrival time
 -----------------------------------------------------------------------------
-                                 -0.57   slack (VIOLATED)
+                                 -0.04   slack (VIOLATED)
+
+
+Startpoint: a[0] (input port clocked by clk)
+Endpoint: sum[2] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+Corner: ff
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00 v input external delay
+                  0.01    0.00    0.00 v a[0] (in)
+     1    0.01                           a[0] (net)
+                  0.01    0.00    0.00 v input1/A (sky130_fd_sc_hd__buf_6)
+                  0.02    0.07    0.07 v input1/X (sky130_fd_sc_hd__buf_6)
+     2    0.01                           net1 (net)
+                  0.02    0.00    0.07 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
+                  0.04    0.10    0.18 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     2    0.01                           ppa_grey_1_1.U1.A1 (net)
+                  0.04    0.00    0.18 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.03    0.13    0.31 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+     2    0.01                           ppa_grey_1_1.U1.Y (net)
+                  0.03    0.00    0.31 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.03    0.11    0.42 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+     2    0.01                           ppa_grey_2_2.U1.Y (net)
+                  0.03    0.00    0.42 v rebuffer2/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.03    0.07    0.49 v rebuffer2/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.01                           net16 (net)
+                  0.03    0.00    0.49 v ppa_post_2_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
+                  0.08    0.09    0.58 ^ ppa_post_2_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+     1    0.00                           ppa_post_2_4.U1.Y (net)
+                  0.08    0.00    0.58 ^ _2_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.04    0.06    0.64 ^ _2_/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.00                           net13 (net)
+                  0.04    0.00    0.64 ^ output13/A (sky130_fd_sc_hd__buf_2)
+                  0.13    0.15    0.79 ^ output13/X (sky130_fd_sc_hd__buf_2)
+     1    0.03                           sum[2] (net)
+                  0.13    0.00    0.79 ^ sum[2] (out)
+                                  0.79   data arrival time
+
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
+-----------------------------------------------------------------------------
+                                  0.75   data required time
+                                 -0.79   data arrival time
+-----------------------------------------------------------------------------
+                                 -0.04   slack (VIOLATED)
 
 
 Startpoint: b[0] (input port clocked by clk)
@@ -637,40 +693,40 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.02    0.01    0.01 ^ b[0] (in)
      1    0.00                           b[0] (net)
                   0.02    0.00    0.01 ^ input5/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.08    0.09    0.10 ^ input5/X (sky130_fd_sc_hd__clkbuf_1)
+                  0.07    0.08    0.09 ^ input5/X (sky130_fd_sc_hd__clkbuf_1)
      2    0.01                           net5 (net)
-                  0.08    0.00    0.10 ^ ppa_pre_1_0.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.13    0.14    0.23 ^ ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.07    0.00    0.09 ^ ppa_pre_1_0.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
+                  0.12    0.13    0.21 ^ ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.13    0.00    0.23 ^ ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
-                  0.04    0.10    0.33 ^ ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.12    0.00    0.22 ^ ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.05    0.10    0.31 ^ ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_1_1.U1.Y (net)
-                  0.04    0.00    0.33 ^ rebuffer3/A (sky130_fd_sc_hd__dlygate4sd1_1)
-                  0.05    0.15    0.48 ^ rebuffer3/X (sky130_fd_sc_hd__dlygate4sd1_1)
-     1    0.01                           net17 (net)
-                  0.05    0.00    0.48 ^ ppa_post_1_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.09    0.10    0.58 ^ ppa_post_1_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.05    0.00    0.32 ^ rebuffer1/A (sky130_fd_sc_hd__dlygate4sd1_1)
+                  0.04    0.14    0.46 ^ rebuffer1/X (sky130_fd_sc_hd__dlygate4sd1_1)
+     1    0.00                           net15 (net)
+                  0.04    0.00    0.46 ^ ppa_post_1_4.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
+                  0.09    0.10    0.56 ^ ppa_post_1_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      1    0.00                           ppa_post_1_4.U1.Y (net)
-                  0.09    0.00    0.58 ^ _1_/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.03    0.06    0.64 ^ _1_/X (sky130_fd_sc_hd__clkbuf_1)
+                  0.09    0.00    0.56 ^ _1_/A (sky130_fd_sc_hd__clkbuf_1)
+                  0.04    0.07    0.63 ^ _1_/X (sky130_fd_sc_hd__clkbuf_1)
      1    0.00                           net12 (net)
-                  0.03    0.00    0.64 ^ output12/A (sky130_fd_sc_hd__buf_2)
-                  0.13    0.14    0.79 ^ output12/X (sky130_fd_sc_hd__buf_2)
+                  0.04    0.00    0.63 ^ output12/A (sky130_fd_sc_hd__buf_2)
+                  0.13    0.15    0.78 ^ output12/X (sky130_fd_sc_hd__buf_2)
      1    0.03                           sum[1] (net)
-                  0.13    0.00    0.79 ^ sum[1] (out)
-                                  0.79   data arrival time
+                  0.13    0.00    0.78 ^ sum[1] (out)
+                                  0.78   data arrival time
 
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -0.79   data arrival time
+                                  0.75   data required time
+                                 -0.78   data arrival time
 -----------------------------------------------------------------------------
-                                 -0.54   slack (VIOLATED)
+                                 -0.03   slack (VIOLATED)
 
 
 Startpoint: a[0] (input port clocked by clk)
@@ -690,83 +746,36 @@ Fanout     Cap    Slew   Delay    Time   Description
                   0.02    0.07    0.07 v input1/X (sky130_fd_sc_hd__buf_6)
      2    0.01                           net1 (net)
                   0.02    0.00    0.07 v ppa_pre_1_0.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.05    0.11    0.18 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
+                  0.04    0.10    0.18 v ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
      2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.05    0.00    0.18 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
+                  0.04    0.00    0.18 v ppa_grey_1_1.U1.ao21/A2 (sky130_fd_sc_hd__a21o_1)
                   0.03    0.13    0.31 v ppa_grey_1_1.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_1_1.U1.Y (net)
                   0.03    0.00    0.31 v ppa_grey_2_2.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.04    0.11    0.42 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.03    0.11    0.42 v ppa_grey_2_2.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_2_2.U1.Y (net)
-                  0.04    0.00    0.43 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.03    0.00    0.42 v ppa_grey_3_3.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
                   0.04    0.12    0.54 v ppa_grey_3_3.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      2    0.01                           ppa_grey_3_3.U1.Y (net)
                   0.04    0.00    0.54 v ppa_grey_cout.U1.ao21/A1 (sky130_fd_sc_hd__a21o_1)
-                  0.03    0.11    0.65 v ppa_grey_cout.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
+                  0.02    0.10    0.64 v ppa_grey_cout.U1.ao21/X (sky130_fd_sc_hd__a21o_1)
      1    0.00                           net10 (net)
-                  0.03    0.00    0.65 v output10/A (sky130_fd_sc_hd__buf_2)
-                  0.06    0.12    0.77 v output10/X (sky130_fd_sc_hd__buf_2)
+                  0.02    0.00    0.64 v output10/A (sky130_fd_sc_hd__buf_2)
+                  0.07    0.12    0.76 v output10/X (sky130_fd_sc_hd__buf_2)
      1    0.03                           cout (net)
-                  0.06    0.00    0.78 v cout (out)
-                                  0.78   data arrival time
+                  0.07    0.00    0.76 v cout (out)
+                                  0.76   data arrival time
 
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
+                  0.00    1.00    1.00   clock clk (rise edge)
+                          0.00    1.00   clock network delay (ideal)
+                         -0.25    0.75   clock uncertainty
+                          0.00    0.75   clock reconvergence pessimism
+                          0.00    0.75   output external delay
+                                  0.75   data required time
 -----------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -0.78   data arrival time
+                                  0.75   data required time
+                                 -0.76   data arrival time
 -----------------------------------------------------------------------------
-                                 -0.53   slack (VIOLATED)
-
-
-Startpoint: b[0] (input port clocked by clk)
-Endpoint: sum[0] (output port clocked by clk)
-Path Group: clk
-Path Type: max
-Corner: ff
-
-Fanout     Cap    Slew   Delay    Time   Description
------------------------------------------------------------------------------
-                  0.00    0.00    0.00   clock clk (rise edge)
-                          0.00    0.00   clock network delay (ideal)
-                          0.00    0.00 ^ input external delay
-                  0.02    0.01    0.01 ^ b[0] (in)
-     1    0.00                           b[0] (net)
-                  0.02    0.00    0.01 ^ input5/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.08    0.09    0.10 ^ input5/X (sky130_fd_sc_hd__clkbuf_1)
-     2    0.01                           net5 (net)
-                  0.08    0.00    0.10 ^ ppa_pre_1_0.U1.xor2/B (sky130_fd_sc_hd__xor2_1)
-                  0.13    0.14    0.23 ^ ppa_pre_1_0.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     2    0.01                           ppa_grey_1_1.U1.A1 (net)
-                  0.13    0.00    0.23 ^ rebuffer1/A (sky130_fd_sc_hd__dlygate4sd1_1)
-                  0.05    0.16    0.39 ^ rebuffer1/X (sky130_fd_sc_hd__dlygate4sd1_1)
-     1    0.01                           net15 (net)
-                  0.05    0.00    0.39 ^ ppa_post_0_4.U1.xor2/A (sky130_fd_sc_hd__xor2_1)
-                  0.08    0.09    0.48 ^ ppa_post_0_4.U1.xor2/X (sky130_fd_sc_hd__xor2_1)
-     1    0.00                           ppa_post_0_4.U1.Y (net)
-                  0.08    0.00    0.48 ^ _0_/A (sky130_fd_sc_hd__clkbuf_1)
-                  0.04    0.06    0.55 ^ _0_/X (sky130_fd_sc_hd__clkbuf_1)
-     1    0.00                           net11 (net)
-                  0.04    0.00    0.55 ^ output11/A (sky130_fd_sc_hd__buf_2)
-                  0.13    0.15    0.69 ^ output11/X (sky130_fd_sc_hd__buf_2)
-     1    0.03                           sum[0] (net)
-                  0.13    0.00    0.69 ^ sum[0] (out)
-                                  0.69   data arrival time
-
-                  0.00    0.50    0.50   clock clk (rise edge)
-                          0.00    0.50   clock network delay (ideal)
-                         -0.25    0.25   clock uncertainty
-                          0.00    0.25   clock reconvergence pessimism
-                          0.00    0.25   output external delay
-                                  0.25   data required time
------------------------------------------------------------------------------
-                                  0.25   data required time
-                                 -0.69   data arrival time
------------------------------------------------------------------------------
-                                 -0.44   slack (VIOLATED)
+                                 -0.01   slack (VIOLATED)
 
 

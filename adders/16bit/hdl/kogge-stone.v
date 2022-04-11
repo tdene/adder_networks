@@ -5,7 +5,7 @@ module adder(cout, sum, a, b, cin);
 	output [15:0] sum;
 	output cout;
 
-	wire g1, g9, g3, p6, p8, p_lsb, p1, g_lsb, p3, g4, g0, g7, g10, p7, p5, p4, p2, p0, p9, p14, g2, g5, p12, g13, g14, g12, p11, p13, g8, g11, p10, g6;
+	wire p6, g6, p10, g5, g11, p11, g_lsb, p7, p1, p2, p8, p13, p4, g10, g3, g0, g2, g14, g7, p3, p12, p14, g13, g12, p5, p0, g1, g4, g8, p9, p_lsb, g9;
 	wire n62, n63, n64, n65, n66, n68, n69, n71, n72, n75, n76, n79, n80, n83, n84, n87, n88, n91, n92, n95, n96, n99, n100, n103, n104, n107, n108, n111, n112, n115, n116, n119, n120, n121, n122, n123, n124, n125, n126, n128, n129, n131, n132, n134, n135, n137, n138, n141, n142, n145, n146, n149, n150, n153, n154, n157, n158, n161, n162, n165, n166, n169, n170, n171, n172, n173, n174, n175, n176, n177, n178, n179, n180, n181, n182, n184, n185, n187, n188, n190, n191, n193, n194, n196, n197, n199, n200, n202, n203, n205, n207, n209, n211, n213, n215, n217, n219, n221, n222, n223, n224, n225, n226, n227, n228;
 
 // start of pre-processing logic
@@ -137,6 +137,25 @@ module adder(cout, sum, a, b, cin);
 
 endmodule
 
+module ppa_pre(a_in, b_in, pout, gout);
+
+	input a_in, b_in;
+	output pout, gout;
+
+	xor2 U1(pout,a_in,b_in);
+	and2 U2(gout,a_in,b_in);
+
+endmodule
+
+module ppa_post(pin, gin, sum);
+
+	input pin, gin;
+	output sum;
+
+	xor2 U1(sum,pin,gin);
+
+endmodule
+
 module ppa_buffer(pin, gin, pout, gout);
 
 	input pin, gin;
@@ -147,22 +166,13 @@ module ppa_buffer(pin, gin, pout, gout);
 
 endmodule
 
-module ppa_grey(gin, pin, gout);
+module ppa_black(gin, pin, gout, pout);
 
-	input[1:0] gin;
-	input pin;
-	output gout;
+	input [1:0] gin, pin;
+	output gout, pout;
 
-	ao21 U1(gout,gin[0],pin,gin[1]);
-
-endmodule
-
-module ppa_post(pin, gin, sum);
-
-	input pin, gin;
-	output sum;
-
-	xor2 U1(sum,pin,gin);
+	and2 U1(pout,pin[1],pin[0]);
+	ao21 U2(gout,gin[0],pin[1],gin[1]);
 
 endmodule
 
@@ -176,22 +186,12 @@ module ppa_first_pre(cin, pout, gout);
 
 endmodule
 
-module ppa_pre(a_in, b_in, pout, gout);
+module ppa_grey(gin, pin, gout);
 
-	input a_in, b_in;
-	output pout, gout;
+	input[1:0] gin;
+	input pin;
+	output gout;
 
-	xor2 U1(pout,a_in,b_in);
-	and2 U2(gout,a_in,b_in);
-
-endmodule
-
-module ppa_black(gin, pin, gout, pout);
-
-	input [1:0] gin, pin;
-	output gout, pout;
-
-	and2 U1(pout,pin[1],pin[0]);
-	ao21 U2(gout,gin[0],pin[1],gin[1]);
+	ao21 U1(gout,gin[0],pin,gin[1]);
 
 endmodule
