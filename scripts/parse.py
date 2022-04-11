@@ -69,6 +69,8 @@ def synth_power(base_path):
 def pnr_timing(base_path):
     path = base_path / "routing/24-parasitics_multi_corner_sta.max.rpt"
     if not path.exists():
+        path = base_path / "routing/17-grt_sta.max.rpt"
+    if not path.exists():
         raise FileNotFoundError(path)
 
     with open(path) as f:
@@ -81,6 +83,8 @@ def pnr_timing(base_path):
 def pnr_area(base_path):
     path = base_path / "routing/24-parasitics_multi_corner_sta.area.rpt"
     if not path.exists():
+        path = base_path / "routing/17-grt_sta.area.rpt"
+    if not path.exists():
         raise FileNotFoundError(path)
 
     with open(path) as f:
@@ -92,6 +96,8 @@ def pnr_area(base_path):
 
 def pnr_power(base_path):
     path = base_path / "routing/24-parasitics_multi_corner_sta.power.rpt"
+    if not path.exists():
+        path = base_path / "routing/17-grt_sta.power.rpt"
     if not path.exists():
         raise FileNotFoundError(path)
 
