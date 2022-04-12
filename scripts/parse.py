@@ -180,7 +180,10 @@ def main():
         data.append("{:~P}".format(round(p_power.to('uW'),0)))
         data.append("{:~P}".format(round(p_energy.to('fJ'),0)))
 
-        data.append(p_area[1])
+        try:
+            data.append(p_area[1])
+        except:
+            data.append("PnR area not available")
 
         data.append("{:~P}".format(round(s_timing.to('ns'),2)))
         data.append("{:~P}".format(round((1.0/s_timing).to('MHz'),0)))
