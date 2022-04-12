@@ -1,6 +1,7 @@
 import argparse
 from pint import UnitRegistry
 from pathlib import Path
+from glob import glob
 
 Q_ = UnitRegistry().Quantity
 
@@ -25,9 +26,7 @@ def parse_path(width,scl,name):
     return path
 
 def synth_timing(base_path):
-    path = base_path / "synthesis/2-synthesis_sta.max.rpt"
-    if not path.exists():
-        path = base_path / "synthesis/2-syn_sta.max.rpt"
+    path = next(base_path.glob("*/2-*max.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -39,9 +38,7 @@ def synth_timing(base_path):
     return None
 
 def synth_area(base_path):
-    path = base_path / "synthesis/1-synthesis.stat.rpt.strategy4"
-    if not path.exists():
-        path = base_path / "synthesis/1-synthesis.AREA 0.stat.rpt"
+    path = next(base_path.glob("*/1-*stat.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -53,9 +50,7 @@ def synth_area(base_path):
     return None
 
 def synth_power(base_path):
-    path = base_path / "synthesis/2-synthesis_sta.power.rpt"
-    if not path.exists():
-        path = base_path / "synthesis/2-syn_sta.power.rpt"
+    path = next(base_path.glob("*/2-*power.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -67,9 +62,7 @@ def synth_power(base_path):
     return None
 
 def pnr_timing(base_path):
-    path = base_path / "routing/24-parasitics_multi_corner_sta.max.rpt"
-    if not path.exists():
-        path = base_path / "routing/17-grt_sta.max.rpt"
+    path = next(base_path.glob("*/24-*max.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -81,9 +74,7 @@ def pnr_timing(base_path):
     return None
 
 def pnr_area(base_path):
-    path = base_path / "routing/24-parasitics_multi_corner_sta.area.rpt"
-    if not path.exists():
-        path = base_path / "routing/17-grt_sta.area.rpt"
+    path = next(base_path.glob("*/24-*area.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -95,9 +86,7 @@ def pnr_area(base_path):
     return None
 
 def pnr_power(base_path):
-    path = base_path / "routing/24-parasitics_multi_corner_sta.power.rpt"
-    if not path.exists():
-        path = base_path / "routing/17-grt_sta.power.rpt"
+    path = next(base_path.glob("*/24-*power.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -112,9 +101,7 @@ def pnr_power(base_path):
     return None
 
 def num_cells(base_path):
-    path = base_path / "synthesis/1-synthesis.stat.rpt.strategy4"
-    if not path.exists():
-        path = base_path / "synthesis/1-synthesis.AREA 0.stat.rpt"
+    path = next(base_path.glob("*/1-*stat.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
