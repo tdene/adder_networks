@@ -150,17 +150,13 @@ def main():
         s_area = synth_area(path)
         s_timing = synth_timing(path)
         s_power = synth_power(path)
-        adj_s_power = s_power*target/s_timing
-        adj_s_power = s_power
-        s_energy = adj_s_power * s_timing
+        s_energy = s_power * s_timing
 #        s_edp = s_energy * s_timing
 
         p_area = pnr_area(path)
         p_timing = pnr_timing(path)
         p_power = pnr_power(path)
-        adj_p_power = p_power*target/p_timing
-        adj_p_power = p_power
-        p_energy = adj_p_power * p_timing
+        p_energy = p_power * p_timing
 #        p_edp = p_energy * p_timing
 
         cells = num_cells(path)
@@ -177,8 +173,11 @@ def main():
 
         data.append("{:~P}".format(round(p_timing.to('ns'),2)))
         data.append("{:~P}".format(round((1.0/p_timing).to('MHz'),0)))
-        data.append("{:~P}".format(round(p_area[0],0)))
-        data.append("{:~P}".format(round(adj_p_power.to('uW'),0)))
+        try:
+            data.append("{:~P}".format(round(p_area[0],0)))
+        except:
+            data.append("PnR area not available")
+        data.append("{:~P}".format(round(p_power.to('uW'),0)))
         data.append("{:~P}".format(round(p_energy.to('fJ'),0)))
 
         data.append(p_area[1])
@@ -186,7 +185,7 @@ def main():
         data.append("{:~P}".format(round(s_timing.to('ns'),2)))
         data.append("{:~P}".format(round((1.0/s_timing).to('MHz'),0)))
         data.append("{:~P}".format(round(s_area,0)))
-        data.append("{:~P}".format(round(adj_s_power.to('uW'),0)))
+        data.append("{:~P}".format(round(s_power.to('uW'),0)))
         data.append("{:~P}".format(round(s_energy.to('fJ'),0)))
         
         data = [d.replace(".0 "," ") if isinstance(d,str) else d for d in data]
