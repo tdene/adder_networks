@@ -174,7 +174,7 @@ def main():
         data.append("{:,.2f~P}".format(round(p_timing.to('ns'),2)))
         data.append("{:,.0f~P}".format(round((1.0/p_timing).to('MHz'),0)))
         try:
-            data.append("{:,.2f~P}".format(round(p_area[0],0)))
+            data.append("{:,.0f~P}".format(round(p_area[0],0)))
         except:
             data.append("PnR area not available")
         data.append("{:,.0f~P}".format(round(p_power.to('uW'),0)))
