@@ -171,27 +171,25 @@ def main():
         data.append(target_density)
         data.append(cells)
 
-        data.append("{:~P}".format(round(p_timing.to('ns'),2)))
-        data.append("{:~P}".format(round((1.0/p_timing).to('MHz'),0)))
+        data.append("{:,.2f~P}".format(round(p_timing.to('ns'),2)))
+        data.append("{:,.0f~P}".format(round((1.0/p_timing).to('MHz'),0)))
         try:
-            data.append("{:~P}".format(round(p_area[0],0)))
+            data.append("{:,.2f~P}".format(round(p_area[0],0)))
         except:
             data.append("PnR area not available")
-        data.append("{:~P}".format(round(p_power.to('uW'),0)))
-        data.append("{:~P}".format(round(p_energy.to('fJ'),0)))
+        data.append("{:,.0f~P}".format(round(p_power.to('uW'),0)))
+        data.append("{:,.0f~P}".format(round(p_energy.to('fJ'),0)))
 
         try:
             data.append(p_area[1])
         except:
             data.append("PnR area not available")
 
-        data.append("{:~P}".format(round(s_timing.to('ns'),2)))
-        data.append("{:~P}".format(round((1.0/s_timing).to('MHz'),0)))
-        data.append("{:~P}".format(round(s_area,0)))
-        data.append("{:~P}".format(round(s_power.to('uW'),0)))
-        data.append("{:~P}".format(round(s_energy.to('fJ'),0)))
-        
-        data = [d.replace(".0 "," ") if isinstance(d,str) else d for d in data]
+        data.append("{:,.2f~P}".format(round(s_timing.to('ns'),2)))
+        data.append("{:,.0f~P}".format(round((1.0/s_timing).to('MHz'),0)))
+        data.append("{:,.0f~P}".format(round(s_area,0)))
+        data.append("{:,.0f~P}".format(round(s_power.to('uW'),0)))
+        data.append("{:,.0f~P}".format(round(s_energy.to('fJ'),0)))
 
         print(*data,sep=',')
     print()
