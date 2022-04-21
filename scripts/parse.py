@@ -62,19 +62,22 @@ def synth_power(base_path):
     return None
 
 def pnr_timing(base_path):
-    path = next(base_path.glob("*/24-*max.rpt*"))
+    path = next(base_path.glob("*/28-*max.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
+    flag = False
     with open(path) as f:
         for line in f:
             l = line.split()
-            if ('arrival' in l):
+            if ('Typical' in l):
+                flag = True
+            if (flag and 'arrival' in l):
                 return Q_(float(l[0]),'ns')
     return None
 
 def pnr_area(base_path):
-    path = next(base_path.glob("*/24-*area.rpt*"))
+    path = next(base_path.glob("*/28-*area.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -86,7 +89,7 @@ def pnr_area(base_path):
     return None
 
 def pnr_power(base_path):
-    path = next(base_path.glob("*/24-*power.rpt*"))
+    path = next(base_path.glob("*/28-*power.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
@@ -142,7 +145,7 @@ def main():
     header.append("Area")
     header.append("Power")
     header.append("Energy")
-    print(*header,sep=',')
+    print(*header,sep=';')
 
     for n in names:
         path = parse_path(w,scl,n)
@@ -191,7 +194,7 @@ def main():
         data.append("{:,.0f~P}".format(round(s_power.to('uW'),0)))
         data.append("{:,.0f~P}".format(round(s_energy.to('fJ'),0)))
 
-        print(*data,sep=',')
+        print(*data,sep=';')
     print()
 
 if __name__=="__main__":
