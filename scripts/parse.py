@@ -64,6 +64,8 @@ def synth_power(base_path):
 def pnr_timing(base_path):
     path = next(base_path.glob("*/28-*max.rpt*"))
     if not path.exists():
+        path = next(base_path.glob("*/24-*max.rpt*"))
+    if not path.exists():
         raise FileNotFoundError(path)
 
     flag = False
@@ -79,6 +81,8 @@ def pnr_timing(base_path):
 def pnr_area(base_path):
     path = next(base_path.glob("*/28-*area.rpt*"))
     if not path.exists():
+        path = next(base_path.glob("*/24-*max.rpt*"))
+    if not path.exists():
         raise FileNotFoundError(path)
 
     with open(path) as f:
@@ -90,6 +94,8 @@ def pnr_area(base_path):
 
 def pnr_power(base_path):
     path = next(base_path.glob("*/28-*power.rpt*"))
+    if not path.exists():
+        path = next(base_path.glob("*/24-*max.rpt*"))
     if not path.exists():
         raise FileNotFoundError(path)
 
