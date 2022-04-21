@@ -14,5 +14,7 @@ if __name__=="__main__":
         getattr(g,a.split("@")[0])(*[int(x) for x in a.split("@")[1].split(",")]);
     adder_root=join(environ["ROOT_DIR"],"adders",environ["WIDTH"]+"bit")
     adder_name=environ["DESIGN_NICKNAME"]
+    g.recalc_weights()
+    g.add_best_blocks()
     g.hdl(join(adder_root,'hdl',adder_name+".v"),environ["MAPPING"])
     g.png(join(adder_root,'png',adder_name+".png"))
